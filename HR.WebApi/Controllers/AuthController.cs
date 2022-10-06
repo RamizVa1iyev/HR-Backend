@@ -34,7 +34,3 @@ namespace HR.WebApi.Controllers
         }
     }
 }
-// Asim 14/55
-//Ramiz 14/58
-//Afet 15/01
-//Arzu 

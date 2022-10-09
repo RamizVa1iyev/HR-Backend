@@ -2,10 +2,10 @@
 
 namespace Core.Business.Abstract
 {
-    public interface IUserService
+    public interface IUserService : IExtendedServiceRepository<User>
     {
         List<OperationClaim> GetClaims(User user);
-        void Add(User user);
         User GetByMail(string email);
+        string GenerateSecretCode(int claimId);
     }
 }

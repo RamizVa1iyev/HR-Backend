@@ -4,11 +4,11 @@ using Core.Entities.Concrete;
 
 namespace Core.Business.Concrete
 {
-    public class UserManager : IUserService
+    public partial class UserManager : ManagerRepositoryBase<User, IUserRepository>, IUserService
     {
         private readonly IUserRepository _userRepository;
 
-        public UserManager(IUserRepository userRepository)
+        public UserManager(IUserRepository userRepository) : base(userRepository)
         {
             _userRepository = userRepository;
         }

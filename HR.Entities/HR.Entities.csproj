@@ -7,11 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\" />
+    <Compile Remove="DTOs\**" />
+    <EmbeddedResource Remove="DTOs\**" />
+    <None Remove="DTOs\**" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Other\" />
+    <Folder Include="Models\ResponseModels\" />
+    <Folder Include="Models\RequestModels\" />
   </ItemGroup>
 
 </Project>

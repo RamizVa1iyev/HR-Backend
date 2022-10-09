@@ -55,6 +55,7 @@
   <ItemGroup>
     <Folder Include="DataAccess\Dynamic\" />
     <Folder Include="DataAccess\Paging\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

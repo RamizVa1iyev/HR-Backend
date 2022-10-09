@@ -13,7 +13,7 @@ namespace HR.Business.Concrete
             base.SetValidator(new UserKeyValidator());
         }
 
-        public int Generate(int roleId)
+        public UserKey Generate(int roleId)
         {
             var key = GenerateSecretKey(roleId);
 
@@ -25,7 +25,7 @@ namespace HR.Business.Concrete
                 IsUsed = false
             };
 
-            return base.Add(userKey).Id;
+            return base.Add(userKey);
         }
 
         private string GenerateSecretKey(int roleId)

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Core.Migrations
 {
-    public partial class CoreInit : Migration
+    public partial class Core : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,10 +44,7 @@ namespace Core.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FatherName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BirthDay = table.Column<DateTime>(type: "datetime2", nullable: true),
                     PasswordHash = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     PasswordSalt = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false)

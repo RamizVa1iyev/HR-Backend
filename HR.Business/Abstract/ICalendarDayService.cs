@@ -11,6 +11,6 @@ namespace HR.Business.Abstract
 {
     public interface ICalendarDayService : IExtendedServiceRepository<CalendarDay>
     {
-        CalendarDay Add(CalendarDayModel calendarDay);
+
     }
 }

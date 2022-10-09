@@ -13,19 +13,12 @@ using System.Threading.Tasks;
 namespace HR.Business.Concrete
 {
     public class CalendarDayManager : ManagerRepositoryBase<CalendarDay, ICalendarDayRepository>, ICalendarDayService
-    {
-        private readonly ICalendarDayRepository _calendarDayRepository;
+    {        
         protected CalendarDayManager(ICalendarDayRepository repository) : base(repository)
         {
-            _calendarDayRepository = repository;
-            base.SetValidator(new CalendarDayValidator());
+           base.SetValidator(new CalendarDayValidator());
         }
 
-        public CalendarDay Add(CalendarDayModel calendarDayModel)
-        {
-            var calendarDay = new CalendarDay() { Date = calendarDayModel.Date, DayType = calendarDayModel.DayType };
-            _calendarDayRepository.Add(calendarDay);
-            return calendarDay;
-        }
+      
     }
 }

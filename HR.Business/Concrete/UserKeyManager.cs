@@ -6,14 +6,29 @@ using HR.Entities.Concrete;
 
 namespace HR.Business.Concrete
 {
-    public class UserSecretKeyManager : ManagerRepositoryBase<UserSecretKey, IUserSecretKeyRepository>, IUserSecretKeyService
+    public class UserKeyManager : ManagerRepositoryBase<UserKey, IUserKeyRepository>, IUserKeyService
     {
-        protected UserSecretKeyManager(IUserSecretKeyRepository repository) : base(repository)
+        public UserKeyManager(IUserKeyRepository repository) : base(repository)
         {
-            base.SetValidator(new UserSecretKeyValidator());
+            base.SetValidator(new UserKeyValidator());
         }
 
-        public string GenerateSecretKey(int roleId)
+        public int Generate(int roleId)
+        {
+            var key = GenerateSecretKey(roleId);
+
+            var userKey = new UserKey
+            {
+                UserId = 0,
+                SecretKey = key,
+                CreateDate = DateTime.Now,
+                IsUsed = false
+            };
+
+            return base.Add(userKey).Id;
+        }
+
+        private string GenerateSecretKey(int roleId)
         {
             var objId = Repository.GetNextId();
             var key = new Random().Next(0, (int)Math.Pow(10, 9)).ToString("D9");

@@ -9,11 +9,11 @@ namespace HR.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TestsController : BaseController<IUserService, User, TestAddRequest, testUpdate, testDelete>
+    public class TestsController //: BaseController<IUserService, User>
     {
         private readonly IUserService _userService;
 
-        public TestsController(IUserService service) : base(service)
+        public TestsController(IUserService service) //: base(service)
         {
         }
     }

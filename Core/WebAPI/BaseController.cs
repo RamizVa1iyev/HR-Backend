@@ -13,11 +13,11 @@ namespace Core.WebAPI
         where TModelDelete : class, IDeleteModel, new()
         where TService : class, IExtendedServiceRepository<TEntity>
     {
-        private readonly TService _service;
+        public readonly TService Service;
 
         public BaseController(TService service)
         {
-            _service = service;
+            Service = service;
         }
 
         protected TTarget Map<TCurrent, TTarget>(TCurrent source)
@@ -39,36 +39,36 @@ namespace Core.WebAPI
         #region Sync
 
         [HttpGet("getall")]
-        public virtual IActionResult GetAll() => Ok(_service.GetAll());
+        public virtual IActionResult GetAll() => Ok(Service.GetAll());
 
         [HttpGet("get")]
-        public virtual IActionResult Get(int id) => Ok(_service.Get(id));
+        public virtual IActionResult Get(int id) => Ok(Service.Get(id));
 
         [HttpPost("add")]
         public virtual IActionResult Add(TModelAdd entity)
         {
             var data = Map<TModelAdd, TEntity>(entity);
-            return Ok(_service.Add(data));
+            return Ok(Service.Add(data));
         }
 
         [HttpPost("update")]
         public virtual IActionResult Update(TModelUpdate entity)
         {
             var data = Map<TModelUpdate, TEntity>(entity);
-            return Ok(_service.Update(data));
+            return Ok(Service.Update(data));
         }
 
         [HttpPost("delete")]
         public virtual IActionResult Delete(TModelDelete entity)
         {
             var data = Map<TModelDelete, TEntity>(entity);
-            return Ok(_service.Delete(data));
+            return Ok(Service.Delete(data));
         }
 
         [HttpPost("deleteall")]
         public virtual IActionResult DeleteAll()
         {
-            _service.DeleteAll();
+            Service.DeleteAll();
             return Ok();
         }
 
@@ -77,36 +77,36 @@ namespace Core.WebAPI
         #region Async
 
         [HttpGet("getallasync")]
-        public async virtual Task<IActionResult> GetAllAsync() => Ok(await _service.GetAllAsync());
+        public async virtual Task<IActionResult> GetAllAsync() => Ok(await Service.GetAllAsync());
 
         [HttpGet("getasync")]
-        public async virtual Task<IActionResult> GetAsync(int id) => Ok(await _service.GetAsync(id));
+        public async virtual Task<IActionResult> GetAsync(int id) => Ok(await Service.GetAsync(id));
 
         [HttpPost("addasync")]
         public async virtual Task<IActionResult> AddAsync(TModelAdd entity)
         {
             var data = Map<TModelAdd, TEntity>(entity);
-            return Ok(await _service.AddAsync(data));
+            return Ok(await Service.AddAsync(data));
         }
 
         [HttpPost("updateasync")]
         public async virtual Task<IActionResult> UpdateAsync(TModelUpdate entity)
         {
             var data = Map<TModelUpdate, TEntity>(entity);
-            return Ok(await _service.UpdateAsync(data));
+            return Ok(await Service.UpdateAsync(data));
         }
 
         [HttpPost("deleteasync")]
         public async virtual Task<IActionResult> DeleteAsync(TModelDelete entity)
         {
             var data = Map<TModelDelete, TEntity>(entity);
-            return Ok(await _service.DeleteAsync(data));
+            return Ok(await Service.DeleteAsync(data));
         }
 
         [HttpPost("deleteallasync")]
         public async virtual Task<IActionResult> DeleteAllAsync()
         {
-            await _service.DeleteAllAsync();
+            await Service.DeleteAllAsync();
             return Ok();
         }
 

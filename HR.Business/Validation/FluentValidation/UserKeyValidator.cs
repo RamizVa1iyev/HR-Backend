@@ -3,9 +3,9 @@ using HR.Entities.Concrete;
 
 namespace HR.Business.Validation.FluentValidation
 {
-    public class UserSecretKeyValidator : AbstractValidator<UserSecretKey>
+    public class UserKeyValidator : AbstractValidator<UserKey>
     {
-        public UserSecretKeyValidator()
+        public UserKeyValidator()
         {
             RuleFor(x => x.UserId).NotNull();
             RuleFor(x => x.UserId).GreaterThanOrEqualTo(0);

@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace HR.DataAccess.Concrete.EntityFramework.Mappings
 {
-    public class UserSecretKeyMap : IEntityTypeConfiguration<UserSecretKey>
+    public class UserKeyMap : IEntityTypeConfiguration<UserKey>
     {
-        public void Configure(EntityTypeBuilder<UserSecretKey> builder)
+        public void Configure(EntityTypeBuilder<UserKey> builder)
         {
-            builder.ToTable("UserSecretKeys");
+            builder.ToTable("UserKeys");
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id).ValueGeneratedOnAdd().IsRequired();

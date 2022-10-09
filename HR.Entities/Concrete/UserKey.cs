@@ -2,19 +2,19 @@
 
 namespace HR.Entities.Concrete
 {
-    public class UserSecretKey : Entity
+    public class UserKey : Entity
     {
         public int UserId { get; set; }
         public string SecretKey { get; set; }
         public DateTime CreateDate { get; set; }
         public bool IsUsed { get; set; }
 
-        public UserSecretKey()
+        public UserKey()
         {
 
         }
 
-        public UserSecretKey(int id, int userId, string secretKey, DateTime createDate, bool isUsed) : base(id)
+        public UserKey(int id, int userId, string secretKey, DateTime createDate, bool isUsed) : base(id)
         {
             UserId = userId;
             SecretKey = secretKey;

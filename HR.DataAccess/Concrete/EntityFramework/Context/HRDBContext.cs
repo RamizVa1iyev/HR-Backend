@@ -9,7 +9,7 @@ namespace HR.DataAccess.Concrete.EntityFramework.Context
         #region DbSets
 
         public DbSet<State> States { get; set; }
-        public DbSet<UserSecretKey> UserSecretKeys { get; set; }
+        public DbSet<UserKey> UserKeys { get; set; }
 
         #endregion
 
@@ -21,7 +21,7 @@ namespace HR.DataAccess.Concrete.EntityFramework.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new StateMap());
-            modelBuilder.ApplyConfiguration(new UserSecretKeyMap());
+            modelBuilder.ApplyConfiguration(new UserKeyMap());
         }
     }
 }

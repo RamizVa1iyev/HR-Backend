@@ -1,6 +1,7 @@
 ﻿using Core.Business.Abstract;
 using Core.DataAccess.Abstract;
 using Core.Entities.Concrete;
+using Core.Entities.Models;
 
 namespace Core.Business.Concrete
 {
@@ -18,14 +19,14 @@ namespace Core.Business.Concrete
             return _userRepository.GetClaims(user);
         }
 
-        public void Add(User user)
-        {
-            _userRepository.Add(user);
-        }
-
         public User GetByMail(string email)
         {
             return _userRepository.Get(u => u.Email == email);
+        }
+
+        public string GenerateSecretCode(int claimId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

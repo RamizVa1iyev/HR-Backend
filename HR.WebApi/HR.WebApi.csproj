@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
     <PackageReference Include="MicroKnights.Log4NetAdoNetAppender" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
@@ -26,6 +27,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\HR.Business\HR.Business.csproj" />
+    <ProjectReference Include="..\HR.DataAccess\HR.DataAccess.csproj" />
+    <ProjectReference Include="..\HR.Entities\HR.Entities.csproj" />
   </ItemGroup>
 
 </Project>

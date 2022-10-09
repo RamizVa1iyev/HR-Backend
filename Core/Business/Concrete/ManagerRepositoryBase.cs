@@ -1,12 +1,8 @@
 ﻿using Core.Aspects.Autofac.Caching;
-using Core.Aspects.Autofac.Validation;
 using Core.Business.Abstract;
-using Core.Constants;
 using Core.CrossCuttingConcerns.Validation;
 using Core.DataAccess.Repositories;
 using Core.Entities.Abstract;
-using Core.Features.Results.Abstract;
-using Core.Features.Results.Concrete;
 using FluentValidation;
 
 namespace Core.Business.Concrete
@@ -28,6 +24,21 @@ namespace Core.Business.Concrete
             _validator = validator;
         }
 
+        protected TTarget Map<TCurrent, TTarget>(TCurrent source)
+        {
+            var data = Activator.CreateInstance<TTarget>();
+
+            var targetProperties = source.GetType().GetProperties();
+            var destinationProperties = data.GetType().GetProperties();
+
+            foreach (var dp in destinationProperties)
+            {
+                var val = targetProperties.FirstOrDefault(p => p.Name == dp.Name)?.GetValue(source);
+                dp.SetValue(data, val);
+            }
+
+            return data;
+        }
 
         #region Sync
 

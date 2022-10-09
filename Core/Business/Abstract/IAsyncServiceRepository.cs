@@ -1,15 +1,15 @@
 ﻿using Core.Entities.Abstract;
-using Core.Features.Results.Abstract;
 
 namespace Core.Business.Abstract
 {
-    public interface IAsyncServiceRepository<T> where T : class, IEntity, new()
+    public interface IAsyncServiceRepository<TEntity>
+        where TEntity : class, IEntity, new()
     {
-        Task<T> AddAsync(T entity);
-        Task<T> UpdateAsync(T entity);
-        Task<T> DeleteAsync(T entity);
+        Task<TEntity> AddAsync(TEntity entity);
+        Task<TEntity> UpdateAsync(TEntity entity);
+        Task<TEntity> DeleteAsync(TEntity entity);
         Task DeleteAllAsync();
-        Task<List<T>> GetAllAsync();
-        Task<T> GetAsync(int id);
+        Task<List<TEntity>> GetAllAsync();
+        Task<TEntity> GetAsync(int id);
     }
 }

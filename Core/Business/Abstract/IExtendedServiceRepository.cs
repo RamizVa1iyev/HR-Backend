@@ -2,8 +2,8 @@
 
 namespace Core.Business.Abstract
 {
-    public interface IExtendedServiceRepository<T> : IServiceRepository<T>, IAsyncServiceRepository<T>
-        where T : class, IEntity, new()
+    public interface IExtendedServiceRepository<TEntity> : IServiceRepository<TEntity>, IAsyncServiceRepository<TEntity>
+        where TEntity : class, IEntity, new()
     {
     }
 }

@@ -7,6 +7,5 @@ namespace Core.Business.Abstract
     {
         List<OperationClaim> GetClaims(User user);
         User GetByMail(string email);
-        string GenerateSecretCode(int claimId);
     }
 }

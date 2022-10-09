@@ -11,12 +11,12 @@ namespace Core.Business.Concrete
         where TEntity : class, IEntity, new()
         where TRepository : class, IExtendedRepository<TEntity>
     {
-        private readonly TRepository _repository;
+        public readonly TRepository Repository;
         private IValidator _validator;
 
         protected ManagerRepositoryBase(TRepository repository)
         {
-            _repository = repository;
+            Repository = repository;
         }
 
         protected void SetValidator(IValidator validator)
@@ -46,26 +46,26 @@ namespace Core.Business.Concrete
         public virtual TEntity Add(TEntity entity)
         {
             ValidationTool.Validate(_validator, entity);
-            return _repository.Add(entity);
+            return Repository.Add(entity);
         }
 
         [CacheRemoveAspect("get")]
-        public virtual TEntity Delete(TEntity entity) => _repository.Delete(entity);
+        public virtual TEntity Delete(TEntity entity) => Repository.Delete(entity);
 
         [CacheRemoveAspect("get")]
-        public virtual void DeleteAll() => _repository.DeleteAll();
+        public virtual void DeleteAll() => Repository.DeleteAll();
 
         [CacheAspect]
-        public virtual TEntity Get(int id) => _repository.Get(e => e.Id == id);
+        public virtual TEntity Get(int id) => Repository.Get(e => e.Id == id);
 
         [CacheAspect]
-        public virtual List<TEntity> GetAll() => _repository.GetAll();
+        public virtual List<TEntity> GetAll() => Repository.GetAll();
 
         [CacheRemoveAspect("get")]
         public virtual TEntity Update(TEntity entity)
         {
             ValidationTool.Validate(_validator, entity);
-            return _repository.Update(entity);
+            return Repository.Update(entity);
         }
 
         #endregion
@@ -75,22 +75,22 @@ namespace Core.Business.Concrete
         public async virtual Task<TEntity> AddAsync(TEntity entity)
         {
             ValidationTool.Validate(_validator, entity);
-            return await _repository.AddAsync(entity);
+            return await Repository.AddAsync(entity);
         }
 
         public async Task<TEntity> UpdateAsync(TEntity entity)
         {
             ValidationTool.Validate(_validator, entity);
-            return await _repository.UpdateAsync(entity);
+            return await Repository.UpdateAsync(entity);
         }
 
-        public async Task<TEntity> DeleteAsync(TEntity entity) => await _repository.DeleteAsync(entity);
+        public async Task<TEntity> DeleteAsync(TEntity entity) => await Repository.DeleteAsync(entity);
 
-        public async Task DeleteAllAsync() => await _repository.DeleteAllAsync();
+        public async Task DeleteAllAsync() => await Repository.DeleteAllAsync();
 
-        public async Task<List<TEntity>> GetAllAsync() => await _repository.GetAllAsync();
+        public async Task<List<TEntity>> GetAllAsync() => await Repository.GetAllAsync();
 
-        public async Task<TEntity> GetAsync(int id) => await _repository.GetAsync(e => e.Id == id);
+        public async Task<TEntity> GetAsync(int id) => await Repository.GetAsync(e => e.Id == id);
 
         #endregion
     }

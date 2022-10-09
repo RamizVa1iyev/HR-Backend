@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Core.Business.Abstract;
+﻿using Core.Business.Abstract;
 using Core.Entities.Abstract;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +14,6 @@ namespace Core.WebAPI
         where TService : class, IExtendedServiceRepository<TEntity>
     {
         private readonly TService _service;
-        private IConfigurationProvider _configurationProvider;
 
         public BaseController(TService service)
         {
@@ -47,10 +45,10 @@ namespace Core.WebAPI
         public virtual IActionResult Get(int id) => Ok(_service.Get(id));
 
         [HttpPost("add")]
-        public virtual IActionResult Add(TModelAdd entity) 
+        public virtual IActionResult Add(TModelAdd entity)
         {
             var data = Map<TModelAdd, TEntity>(entity);
-            return Ok(_service.Add(data)); 
+            return Ok(_service.Add(data));
         }
 
         [HttpPost("update")]

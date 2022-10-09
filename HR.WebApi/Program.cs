@@ -8,6 +8,7 @@ using Core.Features.Security.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Core.Features.Security.Encryption;
+using HR.Business.Dependency.Autofac;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,10 +21,10 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddCoreServices(builder.Configuration);
-//builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder =>
-//{
-//    builder.RegisterModule(new AutofacBusinessModule());
-//});
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder =>
+{
+    builder.RegisterModule(new AutofacBusinessModule());
+});
 
 //builder.Services.AddCors(options =>
 //{

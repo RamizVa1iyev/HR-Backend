@@ -26,6 +26,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\HR.Business\HR.Business.csproj" />
+    <ProjectReference Include="..\HR.DataAccess\HR.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

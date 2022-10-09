@@ -17,8 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Other\" />
-    <Folder Include="Models\ResponseModels\" />
     <Folder Include="Models\RequestModels\" />
   </ItemGroup>
 

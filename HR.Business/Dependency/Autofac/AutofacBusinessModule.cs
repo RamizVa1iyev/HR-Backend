@@ -16,12 +16,15 @@ namespace HR.Business.Dependency.Autofac
             #region DataAccess
 
             builder.RegisterType<EfStateRepository>().As<IStateRepository>().SingleInstance();
+            builder.RegisterType<EfCalendarDayRepository>().As<ICalendarDayRepository>().SingleInstance();
 
             #endregion
 
             #region Business
 
             builder.RegisterType<StateManager>().As<IStateService>().SingleInstance();
+            builder.RegisterType<CalendarDayManager>().As<ICalendarDayService>().SingleInstance();
+
 
             #endregion
 

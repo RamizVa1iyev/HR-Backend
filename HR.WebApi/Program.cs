@@ -8,6 +8,14 @@ using Core.Features.Security.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Core.Features.Security.Encryption;
+using Autofac.Core;
+using Core.DataAccess.Concrete.EntityFramework.Contexts;
+using System.Configuration;
+using HR.DataAccess.Concrete.EntityFramework.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +28,8 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddCoreServices(builder.Configuration);
+
+
 //builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder =>
 //{
 //    builder.RegisterModule(new AutofacBusinessModule());

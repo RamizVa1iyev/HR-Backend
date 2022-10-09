@@ -27,5 +27,10 @@ namespace Core.Business.Concrete
         {
             return _userRepository.Get(u => u.Email == email);
         }
+
+        public string GenerateSecretCode(int claimId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

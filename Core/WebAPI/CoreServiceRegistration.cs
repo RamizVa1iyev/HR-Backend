@@ -13,7 +13,6 @@ namespace Core.WebAPI
         public static IServiceCollection AddCoreServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<CoreContext>(options => options.UseSqlServer(configuration.GetConnectionString("SqlServer")));
-
             return services;
         }
     }

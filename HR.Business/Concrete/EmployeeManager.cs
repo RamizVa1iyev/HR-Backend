@@ -14,7 +14,7 @@ namespace HR.Business.Concrete
 {
     public class EmployeeManager : ManagerRepositoryBase<Employee, IEmployeeRepository>, IEmployeeService
     {
-        protected EmployeeManager(IEmployeeRepository repository) : base(repository)
+        public EmployeeManager(IEmployeeRepository repository) : base(repository)
         {
             base.SetValidator(new EmployeeValidator());
         }

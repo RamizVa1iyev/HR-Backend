@@ -29,7 +29,6 @@
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\HR.Business\HR.Business.csproj" />
     <ProjectReference Include="..\HR.DataAccess\HR.DataAccess.csproj" />
-    <ProjectReference Include="..\HR.Entities\HR.Entities.csproj" />
   </ItemGroup>
 
 </Project>

@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace HR.Business.Abstract
 {
-    public interface IEmployeeService:IExtendedServiceRepository<Employee>
+    public interface IEmployeeService : IExtendedServiceRepository<Employee>
     {
+
     }
 }

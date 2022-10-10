@@ -23,21 +23,18 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCoreServices(builder.Configuration);
 builder.Services.AddDataAccessServices(builder.Configuration);
-builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder =>
-{
-    builder.RegisterModule(new AutofacBusinessModule());
-});
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder =>
 {
     builder.RegisterModule(new AutofacBusinessModule());
 });
 
-builder.Services.AddCors(options =>
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder =>
 {
-    options.AddPolicy("AllowOrigin",
-        builder => builder.WithOrigins("http://localhost:3000"));
+    builder.RegisterModule(new AutofacBusinessModule());
 });
+
+
 
 var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 

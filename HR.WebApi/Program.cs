@@ -1,21 +1,14 @@
-using Autofac.Extensions.DependencyInjection;
 using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Core.DependencyResolvers;
 using Core.Extensions;
 using Core.Features.IoC;
-using Core.WebAPI;
+using Core.Features.Security.Encryption;
 using Core.Features.Security.Jwt;
+using Core.WebAPI;
+using HR.Business.Dependency.Autofac;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using Core.Features.Security.Encryption;
-using Autofac.Core;
-using Core.DataAccess.Concrete.EntityFramework.Contexts;
-using System.Configuration;
-using HR.DataAccess.Concrete.EntityFramework.Context;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Serialization;
-using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,16 +23,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCoreServices(builder.Configuration);
 
 
-//builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder =>
-//{
-//    builder.RegisterModule(new AutofacBusinessModule());
-//});
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder =>
+{
+    builder.RegisterModule(new AutofacBusinessModule());
+});
 
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy("AllowOrigin",
-//        builder => builder.WithOrigins("http://localhost:3000"));
-//});
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigin",
+        builder => builder.WithOrigins("http://localhost:3000"));
+});
 
 var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
@@ -62,6 +55,7 @@ builder.Services.AddDependencyResolvers(new ICoreModule[]
 {
     new CoreModule()
 });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -71,7 +65,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.ConfigureExceptionMiddleware();
+//app.ConfigureExceptionMiddleware();
 
 app.UseAuthentication();
 

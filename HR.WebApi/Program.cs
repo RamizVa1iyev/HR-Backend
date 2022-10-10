@@ -1,12 +1,15 @@
-using Autofac.Extensions.DependencyInjection;
 using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Core.DependencyResolvers;
 using Core.Extensions;
 using Core.Features.IoC;
-using Core.WebAPI;
+using Core.Features.Security.Encryption;
 using Core.Features.Security.Jwt;
+using Core.WebAPI;
+using HR.Business.Dependency.Autofac;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+<<<<<<< HEAD
 using Core.Features.Security.Encryption;
 <<<<<<< HEAD
 using HR.Business.Dependency.Autofac;
@@ -20,6 +23,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
+>>>>>>> origin/arzu-branch-1
+=======
 >>>>>>> origin/arzu-branch-1
 
 var builder = WebApplication.CreateBuilder(args);
@@ -42,17 +47,24 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).Conf
 =======
 
 
+<<<<<<< HEAD
 //builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder =>
 //{
 //    builder.RegisterModule(new AutofacBusinessModule());
 //});
 >>>>>>> origin/arzu-branch-1
+=======
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder =>
+{
+    builder.RegisterModule(new AutofacBusinessModule());
+});
+>>>>>>> origin/arzu-branch-1
 
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy("AllowOrigin",
-//        builder => builder.WithOrigins("http://localhost:3000"));
-//});
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigin",
+        builder => builder.WithOrigins("http://localhost:3000"));
+});
 
 var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
@@ -75,6 +87,7 @@ builder.Services.AddDependencyResolvers(new ICoreModule[]
 {
     new CoreModule()
 });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

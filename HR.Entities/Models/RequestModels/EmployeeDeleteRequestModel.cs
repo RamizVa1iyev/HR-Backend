@@ -5,9 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Entities.Models
+namespace HR.Entities.Models.RequestModels
 {
-    public class TestAdd : IAddModel
+    public class EmployeeDeleteRequestModel:IDeleteModel
     {
+        public int Id { get; set; }
+
     }
 }

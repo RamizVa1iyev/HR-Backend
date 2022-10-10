@@ -17,8 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <Folder Include="Models\Other\" />
     <Folder Include="Models\ResponseModels\" />
+=======
+    <Folder Include="Models\RequestModels\" />
+>>>>>>> origin/arzu-branch-1
   </ItemGroup>
 
 </Project>

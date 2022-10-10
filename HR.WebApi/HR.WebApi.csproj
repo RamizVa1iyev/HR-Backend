@@ -29,7 +29,10 @@
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\HR.Business\HR.Business.csproj" />
     <ProjectReference Include="..\HR.DataAccess\HR.DataAccess.csproj" />
+<<<<<<< HEAD
     <ProjectReference Include="..\HR.Entities\HR.Entities.csproj" />
+=======
+>>>>>>> origin/arzu-branch-1
   </ItemGroup>
 
 </Project>

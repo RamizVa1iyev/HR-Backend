@@ -22,7 +22,11 @@ namespace HR.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+<<<<<<< HEAD
             modelBuilder.Entity("HR.Entities.Concrete.State", b =>
+=======
+            modelBuilder.Entity("HR.Entities.Concrete.CalendarDay", b =>
+>>>>>>> origin/arzu-branch-1
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -30,6 +34,7 @@ namespace HR.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+<<<<<<< HEAD
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
@@ -72,6 +77,19 @@ namespace HR.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserKeys", (string)null);
+=======
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("Date");
+
+                    b.Property<int>("DayType")
+                        .HasColumnType("int")
+                        .HasColumnName("DayType");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CalendarDays", (string)null);
+>>>>>>> origin/arzu-branch-1
                 });
 #pragma warning restore 612, 618
         }

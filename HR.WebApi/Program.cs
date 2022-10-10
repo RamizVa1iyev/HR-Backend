@@ -8,8 +8,19 @@ using Core.Features.Security.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Core.Features.Security.Encryption;
+<<<<<<< HEAD
 using HR.Business.Dependency.Autofac;
 using HR.DataAccess;
+=======
+using Autofac.Core;
+using Core.DataAccess.Concrete.EntityFramework.Contexts;
+using System.Configuration;
+using HR.DataAccess.Concrete.EntityFramework.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+>>>>>>> origin/arzu-branch-1
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,11 +33,20 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddCoreServices(builder.Configuration);
+<<<<<<< HEAD
 builder.Services.AddDataAccessServices(builder.Configuration);
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder =>
 {
     builder.RegisterModule(new AutofacBusinessModule());
 });
+=======
+
+
+//builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).ConfigureContainer<ContainerBuilder>(builder =>
+//{
+//    builder.RegisterModule(new AutofacBusinessModule());
+//});
+>>>>>>> origin/arzu-branch-1
 
 //builder.Services.AddCors(options =>
 //{

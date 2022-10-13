@@ -19,7 +19,7 @@ namespace HR.Entities.Models.RequestModels
 
         }
 
-        public EmployeeAddRequestModel(int id, int dailyWorkHour, int operatingMode, int status)
+        public EmployeeAddRequestModel(int dailyWorkHour, int operatingMode, int status)
         {
             DailyWorkHour = dailyWorkHour;
             OperatingMode = operatingMode;

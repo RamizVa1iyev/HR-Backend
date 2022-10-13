@@ -10,6 +10,7 @@ namespace HR.DataAccess.Concrete.EntityFramework.Context
     {
         #region DbSet
         public DbSet<CalendarDay> CalendarDays { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
         #endregion
         public HRDBContext(DbContextOptions<HRDBContext> options) : base(options)

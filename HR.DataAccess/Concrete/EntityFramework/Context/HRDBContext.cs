@@ -22,6 +22,9 @@ namespace HR.DataAccess.Concrete.EntityFramework.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CalendarDayMap());
+            modelBuilder.ApplyConfiguration(new EmployeeMap());
+            modelBuilder.ApplyConfiguration(new StateMap());
+            modelBuilder.ApplyConfiguration(new UserKeyMap());
         }
     }
 }

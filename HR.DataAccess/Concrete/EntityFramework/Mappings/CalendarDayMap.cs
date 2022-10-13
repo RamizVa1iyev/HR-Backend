@@ -16,6 +16,9 @@ namespace HR.DataAccess.Concrete.EntityFramework.Mappings
 
             builder.ToTable("CalendarDays");
             builder.HasKey(c => c.Id);
+
+            builder.Property(c => c.Id).ValueGeneratedNever();
+
             builder.Property(c => c.Id).ValueGeneratedOnAdd().IsRequired();
             builder.Property(c => c.Date).HasColumnName("Date");
             builder.Property(c=>c.DayType).HasColumnName("DayType");

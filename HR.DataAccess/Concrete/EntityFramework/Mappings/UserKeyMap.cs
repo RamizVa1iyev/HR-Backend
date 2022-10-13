@@ -11,7 +11,7 @@ namespace HR.DataAccess.Concrete.EntityFramework.Mappings
             builder.ToTable("UserKeys");
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.Id).ValueGeneratedOnAdd().IsRequired();
+            builder.Property(x => x.Id).ValueGeneratedNever();
 
             builder.Property(x => x.UserId).HasColumnName("UserId");
             builder.Property(x => x.SecretKey).HasColumnName("SecretKey");

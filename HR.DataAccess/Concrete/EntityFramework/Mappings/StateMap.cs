@@ -11,7 +11,7 @@ namespace HR.DataAccess.Concrete.EntityFramework.Mappings
             builder.ToTable("States");
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.Id).ValueGeneratedOnAdd().IsRequired();
+            builder.Property(x => x.Id).ValueGeneratedNever();
 
             builder.Property(x => x.Name).HasColumnName("Name");
             builder.Property(x => x.ParentId).HasColumnName("ParentId");

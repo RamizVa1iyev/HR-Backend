@@ -11,8 +11,7 @@ namespace Core.DataAccess.Concrete.EntityFramework.Mappings
             builder.ToTable("Users");
             builder.HasKey(u => u.Id);
 
-            //builder.Property(u=>u.Id).ValueGeneratedNever();
-            builder.Property(u=>u.Id).ValueGeneratedOnAdd().IsRequired();
+            builder.Property(u => u.Id).ValueGeneratedNever();
 
             builder.Property(u => u.FirstName).HasColumnName("FirstName");
             builder.Property(u => u.LastName).HasColumnName("LastName");

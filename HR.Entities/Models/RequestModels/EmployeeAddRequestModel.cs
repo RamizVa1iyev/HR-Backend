@@ -10,20 +10,6 @@ namespace HR.Entities.Models.RequestModels
 {
     public class EmployeeAddRequestModel : IAddModel
     {
-        public int DailyWorkHour { get; set; }
-        public int OperatingMode { get; set; }
-        public int Status { get; set; }
-
-        public EmployeeAddRequestModel()
-        {
-
-        }
-
-        public EmployeeAddRequestModel(int dailyWorkHour, int operatingMode, int status)
-        {
-            DailyWorkHour = dailyWorkHour;
-            OperatingMode = operatingMode;
-            Status = status;
-        }
+       
     }
 }

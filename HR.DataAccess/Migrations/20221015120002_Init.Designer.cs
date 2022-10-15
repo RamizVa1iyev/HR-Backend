@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HR.DataAccess.Migrations
 {
     [DbContext(typeof(HRDBContext))]
-    [Migration("20221015101341_DiseaseBulleten")]
-    partial class DiseaseBulleten
+    [Migration("20221015120002_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,10 +27,7 @@ namespace HR.DataAccess.Migrations
             modelBuilder.Entity("HR.Entities.Concrete.CalendarDay", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2")
@@ -48,10 +45,7 @@ namespace HR.DataAccess.Migrations
             modelBuilder.Entity("HR.Entities.Concrete.DiseaseBulleten", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("ClinicName")
                         .IsRequired()

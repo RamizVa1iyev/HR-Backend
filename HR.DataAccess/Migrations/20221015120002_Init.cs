@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HR.DataAccess.Migrations
 {
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,7 @@ namespace HR.DataAccess.Migrations
                 name: "CalendarDays",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DayType = table.Column<int>(type: "int", nullable: false)
                 },
@@ -74,6 +73,36 @@ namespace HR.DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_UserKeys", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "DiseaseBulletens",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    EmployeeId = table.Column<int>(type: "int", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Note = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DocumentNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ClinicName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PayPercent = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DiseaseBulletens", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DiseaseBulletens_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DiseaseBulletens_EmployeeId",
+                table: "DiseaseBulletens",
+                column: "EmployeeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -82,13 +111,16 @@ namespace HR.DataAccess.Migrations
                 name: "CalendarDays");
 
             migrationBuilder.DropTable(
-                name: "Employees");
+                name: "DiseaseBulletens");
 
             migrationBuilder.DropTable(
                 name: "States");
 
             migrationBuilder.DropTable(
                 name: "UserKeys");
+
+            migrationBuilder.DropTable(
+                name: "Employees");
         }
     }
 }

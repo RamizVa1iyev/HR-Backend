@@ -5,11 +5,11 @@ using Core.Entities.Concrete;
 
 namespace Core.Business.Concrete
 {
-    public partial class UserManager : ManagerRepositoryBase<User, IUserDal>, IUserService
+    public partial class UserManager : ManagerRepositoryBase<User, IUserRepository>, IUserService
     {
-        private readonly IUserDal _userRepository;
+        private readonly IUserRepository _userRepository;
 
-        public UserManager(IUserDal userRepository) : base(userRepository)
+        public UserManager(IUserRepository userRepository) : base(userRepository)
         {
             _userRepository = userRepository;
             base.SetValidator(new UserValidator());

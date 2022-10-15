@@ -6,9 +6,9 @@ using HR.Entities.Concrete;
 
 namespace HR.Business.Concrete
 {
-    public class DiseaseBulletenManager : ManagerRepositoryBase<DiseaseBulleten, IDiseaseBulletenDal>, IDiseaseBulletenService
+    public class DiseaseBulletenManager : ManagerRepositoryBase<DiseaseBulleten, IDiseaseBulletenRepository>, IDiseaseBulletenService
     {
-        public DiseaseBulletenManager(IDiseaseBulletenDal repository) : base(repository)
+        public DiseaseBulletenManager(IDiseaseBulletenRepository repository) : base(repository)
         {
             base.SetValidator(new DiseaseBulletinValidator());
         }

@@ -15,10 +15,10 @@ namespace HR.Business.Dependency.Autofac
         {
             #region DataAccess
 
-            builder.RegisterType<EfStateDal>().As<IStateDal>().SingleInstance();
-            builder.RegisterType<EfCalendarDayDal>().As<ICalendarDayDal>().SingleInstance();
-            builder.RegisterType<EfEmployeeDal>().As<IEmployeeDal>().SingleInstance();
-            builder.RegisterType<EfDiseaseBulletenDal>().As<IDiseaseBulletenDal>().SingleInstance();
+            builder.RegisterType<EfStateRepository>().As<IStateRepository>().SingleInstance();
+            builder.RegisterType<EfCalendarDayRepository>().As<ICalendarDayRepository>().SingleInstance();
+            builder.RegisterType<EfEmployeeDal>().As<IEmployeeRepository>().SingleInstance();
+            builder.RegisterType<EfDiseaseBulletenRepository>().As<IDiseaseBulletenRepository>().SingleInstance();
 
             #endregion
 

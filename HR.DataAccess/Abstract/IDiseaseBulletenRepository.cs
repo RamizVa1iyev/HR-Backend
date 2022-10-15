@@ -3,7 +3,7 @@ using HR.Entities.Concrete;
 
 namespace HR.DataAccess.Abstract
 {
-    public interface IUserKeyDal : IExtendedRepository<UserKey>
+    public interface IDiseaseBulletenRepository: IExtendedRepository<DiseaseBulleten>
     {
     }
 }

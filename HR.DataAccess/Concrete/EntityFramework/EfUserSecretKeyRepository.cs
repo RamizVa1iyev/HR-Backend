@@ -5,9 +5,9 @@ using HR.Entities.Concrete;
 
 namespace HR.DataAccess.Concrete.EntityFramework
 {
-    public class EfUserSecretKeyDal : EfRepositoryBase<UserKey, HRDBContext>, IUserKeyDal
+    public class EfUserSecretKeyRepository : EfRepositoryBase<UserKey, HRDBContext>, IUserKeyRepository
     {
-        public EfUserSecretKeyDal(HRDBContext context) : base(context)
+        public EfUserSecretKeyRepository(HRDBContext context) : base(context)
         {
         }
     }

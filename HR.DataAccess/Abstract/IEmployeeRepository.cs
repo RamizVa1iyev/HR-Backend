@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HR.DataAccess.Abstract
 {
-    public interface IEmployeeDal : IExtendedRepository<Employee>
+    public interface IEmployeeRepository : IExtendedRepository<Employee>
     {
     }
 }

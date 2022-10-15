@@ -13,6 +13,7 @@ namespace HR.DataAccess.Concrete.EntityFramework.Context
         public DbSet<Employee> Employees { get; set; }
 
         #endregion
+
         public HRDBContext(DbContextOptions<HRDBContext> options) : base(options)
         {            
 

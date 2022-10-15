@@ -33,6 +33,7 @@ namespace HR.DataAccess.Concrete.EntityFramework.Mappings
             builder.Property(e => e.DutyId).HasColumnName("DutyId");
 
             builder.HasMany(e => e.DiseaseBulletens);
+            builder.HasMany(e => e.Vacations);
         }
     }
 }

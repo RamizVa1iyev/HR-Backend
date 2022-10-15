@@ -201,6 +201,34 @@ namespace HR.DataAccess.Migrations
                     b.ToTable("UserKeys", (string)null);
                 });
 
+            modelBuilder.Entity("HR.Entities.Concrete.Vacation", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ComeWorkTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("ComeWorkTime");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int")
+                        .HasColumnName("EmployeeId");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("EndDate");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("StartDate");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("Vacations", (string)null);
+                });
+
             modelBuilder.Entity("HR.Entities.Concrete.DiseaseBulleten", b =>
                 {
                     b.HasOne("HR.Entities.Concrete.Employee", "Employee")
@@ -212,9 +240,22 @@ namespace HR.DataAccess.Migrations
                     b.Navigation("Employee");
                 });
 
+            modelBuilder.Entity("HR.Entities.Concrete.Vacation", b =>
+                {
+                    b.HasOne("HR.Entities.Concrete.Employee", "Employee")
+                        .WithMany("Vacations")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
             modelBuilder.Entity("HR.Entities.Concrete.Employee", b =>
                 {
                     b.Navigation("DiseaseBulletens");
+
+                    b.Navigation("Vacations");
                 });
 #pragma warning restore 612, 618
         }

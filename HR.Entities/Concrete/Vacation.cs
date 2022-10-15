@@ -9,6 +9,7 @@ namespace HR.Entities.Concrete
         public DateTime EndDate { get; set; }
         public DateTime ComeWorkTime { get; set; }
 
+        public Employee? Employee { get; set; }
         public Vacation()
         {
 

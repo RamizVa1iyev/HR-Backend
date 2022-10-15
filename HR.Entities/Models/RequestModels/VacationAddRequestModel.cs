@@ -2,7 +2,7 @@
 
 namespace HR.Entities.Models.RequestModels
 {
-    public class DiseaseBulletenAddRequestModel : IAddModel
+    public class VacationAddRequestModel : IAddModel
     {
     }
 }

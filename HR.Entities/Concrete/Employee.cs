@@ -18,6 +18,7 @@ namespace HR.Entities.Concrete
         public int OperatingMode { get; set; }
         public int Status { get; set; }
         public virtual ICollection<DiseaseBulleten>? DiseaseBulletens { get; set; }
+        public virtual ICollection<Vacation>? Vacations { get; set; }
 
         public Employee()
         {

@@ -18,6 +18,7 @@ namespace HR.Business.Dependency.Autofac
             builder.RegisterType<EfStateDal>().As<IStateDal>().SingleInstance();
             builder.RegisterType<EfCalendarDayDal>().As<ICalendarDayDal>().SingleInstance();
             builder.RegisterType<EfEmployeeDal>().As<IEmployeeDal>().SingleInstance();
+            builder.RegisterType<EfDiseaseBulletenDal>().As<IDiseaseBulletenDal>().SingleInstance();
 
             #endregion
 
@@ -26,6 +27,7 @@ namespace HR.Business.Dependency.Autofac
             builder.RegisterType<StateManager>().As<IStateService>().SingleInstance();
             builder.RegisterType<CalendarDayManager>().As<ICalendarDayService>().SingleInstance();
             builder.RegisterType<EmployeeManager>().As<IEmployeeService>().SingleInstance();
+            builder.RegisterType<DiseaseBulletenManager>().As<IDiseaseBulletenService>().SingleInstance();
 
             #endregion
 

@@ -14,7 +14,6 @@ namespace HR.DataAccess.Concrete.EntityFramework.Mappings
 
             builder.Property(d => d.Id).ValueGeneratedNever();
 
-            builder.Property(d => d.Id).ValueGeneratedOnAdd().IsRequired();
             builder.Property(d => d.ClinicName).HasColumnName("ClinicName");
             builder.Property(d => d.StartDate).HasColumnName("StartDate");
             builder.Property(d => d.EndDate).HasColumnName("EndDate");

@@ -11,7 +11,7 @@ namespace Core.DataAccess.Concrete.EntityFramework.Mappings
             builder.ToTable("OperationClaims");
             builder.HasKey(o => o.Id);
 
-            builder.Property(o => o.Id).ValueGeneratedOnAdd().IsRequired();
+            builder.Property(u => u.Id).ValueGeneratedNever();
 
             builder.Property(o => o.Name).HasColumnName("Name");
         }

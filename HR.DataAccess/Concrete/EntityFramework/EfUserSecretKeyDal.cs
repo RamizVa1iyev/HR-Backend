@@ -5,9 +5,9 @@ using HR.Entities.Concrete;
 
 namespace HR.DataAccess.Concrete.EntityFramework
 {
-    public class EfCalendarDayRepository : EfRepositoryBase<CalendarDay, HRDBContext>, ICalendarDayRepository
+    public class EfUserSecretKeyDal : EfRepositoryBase<UserKey, HRDBContext>, IUserKeyDal
     {
-        public EfCalendarDayRepository(HRDBContext context) : base(context)
+        public EfUserSecretKeyDal(HRDBContext context) : base(context)
         {
         }
     }

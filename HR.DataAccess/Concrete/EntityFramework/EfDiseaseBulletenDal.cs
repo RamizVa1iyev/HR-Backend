@@ -5,9 +5,9 @@ using HR.Entities.Concrete;
 
 namespace HR.DataAccess.Concrete.EntityFramework
 {
-    public class EfUserKeyRepository : EfRepositoryBase<UserKey, HRDBContext>, IUserKeyRepository
+    public class EfDiseaseBulletenDal: EfRepositoryBase<DiseaseBulleten, HRDBContext>, IDiseaseBulletenDal
     {
-        public EfUserKeyRepository(HRDBContext context) : base(context)
+        public EfDiseaseBulletenDal(HRDBContext context) : base(context)
         {
         }
     }

@@ -6,9 +6,9 @@ using HR.Entities.Concrete;
 
 namespace HR.Business.Concrete
 {
-    public class CalendarDayManager : ManagerRepositoryBase<CalendarDay, ICalendarDayRepository>, ICalendarDayService
+    public class CalendarDayManager : ManagerRepositoryBase<CalendarDay, ICalendarDayDal>, ICalendarDayService
     {
-        public CalendarDayManager(ICalendarDayRepository repository) : base(repository)
+        public CalendarDayManager(ICalendarDayDal repository) : base(repository)
         {
             base.SetValidator(new CalendarDayValidator());
         }

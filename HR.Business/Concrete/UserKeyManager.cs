@@ -6,9 +6,9 @@ using HR.Entities.Concrete;
 
 namespace HR.Business.Concrete
 {
-    public class UserKeyManager : ManagerRepositoryBase<UserKey, IUserKeyRepository>, IUserKeyService
+    public class UserKeyManager : ManagerRepositoryBase<UserKey, IUserKeyDal>, IUserKeyService
     {
-        public UserKeyManager(IUserKeyRepository repository) : base(repository)
+        public UserKeyManager(IUserKeyDal repository) : base(repository)
         {
             base.SetValidator(new UserKeyValidator());
         }

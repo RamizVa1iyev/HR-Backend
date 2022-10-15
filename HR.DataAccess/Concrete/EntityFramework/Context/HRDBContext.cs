@@ -11,6 +11,7 @@ namespace HR.DataAccess.Concrete.EntityFramework.Context
         #region DbSet
         public DbSet<CalendarDay> CalendarDays { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<DiseaseBulleten> DiseaseBulletens { get; set; }
 
         #endregion
 
@@ -26,6 +27,7 @@ namespace HR.DataAccess.Concrete.EntityFramework.Context
             modelBuilder.ApplyConfiguration(new EmployeeMap());
             modelBuilder.ApplyConfiguration(new StateMap());
             modelBuilder.ApplyConfiguration(new UserKeyMap());
+            modelBuilder.ApplyConfiguration(new DiseaseBulletenMap());
         }
     }
 }

@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace HR.DataAccess.Concrete.EntityFramework
 {
-    public class EfEmployeeRepository : EfRepositoryBase<Employee, HRDBContext>, IEmployeeRepository
+    public class EfEmployeeDal : EfRepositoryBase<Employee, HRDBContext>, IEmployeeDal
     {
-        public EfEmployeeRepository(HRDBContext context) : base(context)
+        public EfEmployeeDal(HRDBContext context) : base(context)
         {
         }
     }

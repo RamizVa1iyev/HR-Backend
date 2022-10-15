@@ -3,7 +3,7 @@ using HR.Entities.Concrete;
 
 namespace HR.DataAccess.Abstract
 {
-    public interface IStateRepository : IExtendedRepository<State>
+    public interface IStateDal : IExtendedRepository<State>
     {
     }
 }

@@ -23,7 +23,7 @@ namespace Core.DependencyResolvers
             serviceCollection.AddSingleton<ITokenHelper, JwtHelper>();
             serviceCollection.AddScoped<IAuthService, AuthManager>();
             serviceCollection.AddScoped<IUserService, UserManager>();
-            serviceCollection.AddScoped<IUserRepository, EfUserRepository>();
+            serviceCollection.AddScoped<IUserDal, EfUserDal>();
         }
     }
 }

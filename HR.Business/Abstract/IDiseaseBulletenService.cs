@@ -1,4 +1,4 @@
-﻿using Core.DataAccess.Repositories;
+﻿using Core.Business.Abstract;
 using HR.Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HR.DataAccess.Abstract
+namespace HR.Business.Abstract
 {
-    public interface IEmployeeRepository : IExtendedRepository<Employee>
+    public interface IDiseaseBulletenService: IExtendedServiceRepository<DiseaseBulleten>
     {
     }
 }

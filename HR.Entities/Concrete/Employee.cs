@@ -17,6 +17,7 @@ namespace HR.Entities.Concrete
         public int DailyWorkHour { get; set; }
         public int OperatingMode { get; set; }
         public int Status { get; set; }
+        public virtual ICollection<DiseaseBulleten>? DiseaseBulletens { get; set; }
 
         public Employee()
         {

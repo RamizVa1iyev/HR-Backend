@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace HR.Business.Concrete
 {
-    public class EmployeeManager : ManagerRepositoryBase<Employee, IEmployeeRepository>, IEmployeeService
+    public class EmployeeManager : ManagerRepositoryBase<Employee, IEmployeeDal>, IEmployeeService
     {
-        public EmployeeManager(IEmployeeRepository repository) : base(repository)
+        public EmployeeManager(IEmployeeDal repository) : base(repository)
         {
             base.SetValidator(new EmployeeValidator());
         }

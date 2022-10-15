@@ -3,7 +3,7 @@ using HR.Entities.Concrete;
 
 namespace HR.DataAccess.Abstract
 {
-    public interface IUserKeyRepository : IExtendedRepository<UserKey>
+    public interface ICalendarDayDal : IExtendedRepository<CalendarDay>
     {
     }
 }

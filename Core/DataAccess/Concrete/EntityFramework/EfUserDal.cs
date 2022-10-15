@@ -5,9 +5,9 @@ using Core.Entities.Concrete;
 
 namespace Core.DataAccess.Concrete.EntityFramework
 {
-    public class EfUserRepository : EfRepositoryBase<User, CoreContext>, IUserRepository
+    public class EfUserDal : EfRepositoryBase<User, CoreContext>, IUserDal
     {
-        public EfUserRepository(CoreContext context) : base(context)
+        public EfUserDal(CoreContext context) : base(context)
         {
 
         }

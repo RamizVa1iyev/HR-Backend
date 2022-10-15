@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HR.DataAccess.Abstract
 {
-    public interface ICalendarDayRepository : IExtendedRepository<CalendarDay>
+    public interface IEmployeeDal : IExtendedRepository<Employee>
     {
     }
 }

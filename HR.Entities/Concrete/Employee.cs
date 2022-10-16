@@ -17,8 +17,12 @@ namespace HR.Entities.Concrete
         public int DailyWorkHour { get; set; }
         public int OperatingMode { get; set; }
         public int Status { get; set; }
+        public virtual User? User { get; set; }
+        public virtual Duty? Duty { get; set; }
+
         public virtual ICollection<DiseaseBulleten>? DiseaseBulletens { get; set; }
         public virtual ICollection<Vacation>? Vacations { get; set; }
+        public virtual ICollection<Overtime>? Overtimes { get; set; }
 
         public Employee()
         {

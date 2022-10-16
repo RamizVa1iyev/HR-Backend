@@ -32,8 +32,12 @@ namespace HR.DataAccess.Concrete.EntityFramework.Mappings
             builder.Property(e => e.UserId).HasColumnName("UserId");
             builder.Property(e => e.DutyId).HasColumnName("DutyId");
 
+            builder.HasOne(e => e.User);
+            builder.HasOne(e => e.Duty);
+
             builder.HasMany(e => e.DiseaseBulletens);
             builder.HasMany(e => e.Vacations);
+            builder.HasMany(e => e.Overtimes);
         }
     }
 }

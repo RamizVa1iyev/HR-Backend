@@ -8,9 +8,9 @@ namespace HR.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VacationsController : BaseController<IVacationServices, Vacation, VacationAddRequestModel, VacationUpdateRequestModel, VacationDeleteRequestModel>
+    public class VacationsController : BaseController<IVacationService, Vacation, VacationAddRequestModel, VacationUpdateRequestModel, VacationDeleteRequestModel>
     {
-        public VacationsController(IVacationServices service) : base(service)
+        public VacationsController(IVacationService service) : base(service)
         {
 
         }

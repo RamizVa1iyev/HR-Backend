@@ -3,7 +3,7 @@ using HR.Entities.Concrete;
 
 namespace HR.Business.Abstract
 {
-    public interface IVacationServices : IExtendedServiceRepository<Vacation>
+    public interface IVacationService : IExtendedServiceRepository<Vacation>
     {
     }
 }

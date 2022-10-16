@@ -6,7 +6,7 @@ using HR.Entities.Concrete;
 
 namespace HR.Business.Concrete
 {
-    public class VacationManager : ManagerRepositoryBase<Vacation, IVacationRepository>, IVacationServices
+    public class VacationManager : ManagerRepositoryBase<Vacation, IVacationRepository>, IVacationService
     {
         public VacationManager(IVacationRepository repository) : base(repository)
         {

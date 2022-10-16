@@ -17,9 +17,10 @@ namespace HR.Business.Dependency.Autofac
 
             builder.RegisterType<EfStateRepository>().As<IStateRepository>().SingleInstance();
             builder.RegisterType<EfCalendarDayRepository>().As<ICalendarDayRepository>().SingleInstance();
-            builder.RegisterType<EfEmployeeDal>().As<IEmployeeRepository>().SingleInstance();
+            builder.RegisterType<EfEmployeeRepository>().As<IEmployeeRepository>().SingleInstance();
             builder.RegisterType<EfDiseaseBulletenRepository>().As<IDiseaseBulletenRepository>().SingleInstance();
             builder.RegisterType<EfVacationRepository>().As<IVacationRepository>().SingleInstance();
+            builder.RegisterType<EfOvertimeRepository>().As<IOvertimeRepository>().SingleInstance();
 
             #endregion
 
@@ -29,7 +30,8 @@ namespace HR.Business.Dependency.Autofac
             builder.RegisterType<CalendarDayManager>().As<ICalendarDayService>().SingleInstance();
             builder.RegisterType<EmployeeManager>().As<IEmployeeService>().SingleInstance();
             builder.RegisterType<DiseaseBulletenManager>().As<IDiseaseBulletenService>().SingleInstance();
-            builder.RegisterType<VacationManager>().As<IVacationServices>().SingleInstance();
+            builder.RegisterType<VacationManager>().As<IVacationService>().SingleInstance();
+            builder.RegisterType<OvertimeManager>().As<IOvertimeService>().SingleInstance();
 
             #endregion
 

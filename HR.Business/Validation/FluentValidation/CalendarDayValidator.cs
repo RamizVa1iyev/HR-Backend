@@ -8,7 +8,7 @@ namespace HR.Business.Validation.FluentValidation
     {
         public CalendarDayValidator()
         {
-            RuleFor(c => c.Date).NotNull();
+            RuleFor(c => c.Date).GreaterThan(new DateTime());
             RuleFor(c => c.DayType).NotNull();
         }
     }

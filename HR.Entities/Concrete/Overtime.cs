@@ -7,6 +7,7 @@ namespace HR.Entities.Concrete
         public int EmployeeId { get; set; }
         public DateTime Date { get; set; }
         public int HourCount { get; set; }
+        public virtual Employee? Employee { get; set; }
 
         public Overtime()
         {

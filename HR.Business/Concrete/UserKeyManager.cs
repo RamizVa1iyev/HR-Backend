@@ -1,4 +1,7 @@
-﻿using Core.Business.Concrete;
+﻿using Core.Business.Abstract;
+using Core.Business.Concrete;
+using Core.Entities.Concrete;
+using Core.Entities.Models;
 using HR.Business.Abstract;
 using HR.Business.Validation.FluentValidation;
 using HR.DataAccess.Abstract;
@@ -8,9 +11,11 @@ namespace HR.Business.Concrete
 {
     public class UserKeyManager : ManagerRepositoryBase<UserKey, IUserKeyRepository>, IUserKeyService
     {
-        public UserKeyManager(IUserKeyRepository repository) : base(repository)
+        private readonly IAuthService _authService;
+        public UserKeyManager(IUserKeyRepository repository, IAuthService authService) : base(repository)
         {
             base.SetValidator(new UserKeyValidator());
+            _authService = authService;
         }
 
         public UserKey Generate(int roleId)
@@ -103,5 +108,11 @@ namespace HR.Business.Concrete
 
             return result;
         }
+
+        public User SignUp(UserForRegisterModel userForRegister)
+        {
+
+        }
+
     }
 }

@@ -11,5 +11,6 @@ namespace Core.Business.Abstract
         User Login(UserForLoginModel userForLoginDto);
         void UserExists(string email);
         AccessToken CreateAccessToken(User user);
+        bool RegisterCheck(UserForRegisterModel model);
     }
 }

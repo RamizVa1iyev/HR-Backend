@@ -7,6 +7,8 @@ using Core.Features.Security.Hashing;
 using Core.Features.Security.Jwt;
 using Core.Features.Results.Concrete;
 using Core.CCC.Exception;
+using Core.CrossCuttingConcerns.Validation;
+using Core.Business.Validation;
 
 namespace Core.Business.Concrete
 {
@@ -52,6 +54,34 @@ namespace Core.Business.Concrete
             }
 
             return userToCheck;
+        }
+
+        public bool RegisterCheck(UserForRegisterModel userForRegister)
+        {
+            var result = true;
+
+            try
+            {
+                UserExists(userForRegister.Email);
+                HashingHelper.CreatePasswordHash(userForRegister.Password, out byte[] passwordHash, out byte[] passwordSalt);
+                var user = new User
+                {
+                    Email = userForRegister.Email,
+                    FirstName = userForRegister.FirstName,
+                    LastName = userForRegister.LastName,
+                    PasswordHash = passwordHash,
+                    PasswordSalt = passwordSalt,
+                    Status = true
+                };
+                ValidationTool.Validate(new UserValidator(), user);
+
+            }
+            catch (Exception)
+            {
+                result = false;
+            }
+
+            return result;
         }
 
         public void UserExists(string email)

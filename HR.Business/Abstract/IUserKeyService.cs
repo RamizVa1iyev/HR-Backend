@@ -6,5 +6,6 @@ namespace HR.Business.Abstract
     public interface IUserKeyService : IExtendedServiceRepository<UserKey>
     {
         UserKey Generate(int roleId);
+        void 
     }
 }

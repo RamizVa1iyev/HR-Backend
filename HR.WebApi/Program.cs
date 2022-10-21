@@ -20,7 +20,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
+builder.Services.AddCors();
 builder.Services.AddCoreServices(builder.Configuration);
 builder.Services.AddDataAccessServices(builder.Configuration);
 
@@ -62,6 +62,7 @@ var app = builder.Build();
 
 app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader());
 app.UseCors(builder => builder.WithOrigins("https://hr-chi.vercel.app").AllowAnyHeader());
+app.UseCors(builder => builder.)
 
 // Configure the HTTP request pipeline.
 app.UseSwagger();

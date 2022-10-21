@@ -32,5 +32,11 @@ namespace HR.WebApi.Controllers
             var result = new UserRegisterResponseModel(userToRegister, accessToken);
             return Ok(result);
         }
+
+        [HttpPost("registercheck")]
+        public IActionResult RegisterCheck(UserForRegisterModel user)
+        {
+            return Ok(_authService.RegisterCheck(user));
+        }
     }
 }

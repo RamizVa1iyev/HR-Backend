@@ -21,6 +21,7 @@ namespace HR.WebApi.Controllers
             return Ok(Service.Generate(roleId));
         }
 
+        [HttpPost("registerwithkey")]
         public IActionResult RegisterWithKey(UserForRegisterModel user)
         {
             return Ok(Service.RegisterWithKey(user));

@@ -39,8 +39,6 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).Conf
     builder.RegisterModule(new AutofacBusinessModule());
 });
 
-
-
 var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -77,7 +75,6 @@ app.UseCors(builder =>
 // Configure the HTTP request pipeline.
 app.UseSwagger();
 app.UseSwaggerUI();
-
 //app.ConfigureExceptionMiddleware();
 
 app.UseAuthentication();

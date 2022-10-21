@@ -60,7 +60,7 @@ builder.Services.AddDependencyResolvers(new ICoreModule[]
 
 var app = builder.Build();
 
-app.UseCors(builder => builder.WithOrigins("https://hr-chi.vercel.app/").AllowAnyHeader());
+app.UseCors(builder => builder.WithOrigins("https://localhost:3000/").AllowAnyHeader());
 
 // Configure the HTTP request pipeline.
 app.UseSwagger();

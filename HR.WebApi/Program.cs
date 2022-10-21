@@ -20,11 +20,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowOrigin",
-        builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader());
-});
+builder.Services.AddCors();
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("AllowOrigin",
+//        builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader());
+//});
 builder.Services.AddCoreServices(builder.Configuration);
 builder.Services.AddDataAccessServices(builder.Configuration);
 
@@ -64,8 +65,14 @@ builder.Services.AddDependencyResolvers(new ICoreModule[]
 
 var app = builder.Build();
 
-app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader());
-app.UseCors(builder => builder.WithOrigins("https://hr-chi.vercel.app").AllowAnyHeader());
+//app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader());
+//app.UseCors(builder => builder.WithOrigins("https://hr-chi.vercel.app").AllowAnyHeader());
+app.UseCors(builder =>
+{
+    builder.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader();
+});
 
 // Configure the HTTP request pipeline.
 app.UseSwagger();

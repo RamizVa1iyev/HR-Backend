@@ -23,7 +23,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowOrigin",
-        builder => builder.WithOrigins("http://localhost:3000"));
+        builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader());
 });
 builder.Services.AddCoreServices(builder.Configuration);
 builder.Services.AddDataAccessServices(builder.Configuration);

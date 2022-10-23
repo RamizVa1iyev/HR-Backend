@@ -1,4 +1,5 @@
-﻿using Core.WebAPI;
+﻿using Core.Entities.Models;
+using Core.WebAPI;
 using HR.Business.Abstract;
 using HR.Entities.Concrete;
 using HR.Entities.Models.RequestModels;
@@ -18,6 +19,12 @@ namespace HR.WebApi.Controllers
         public IActionResult GenerateKey(int roleId)
         {
             return Ok(Service.Generate(roleId));
+        }
+
+        [HttpPost("registerwithkey")]
+        public IActionResult RegisterWithKey(UserForRegisterModel user)
+        {
+            return Ok(Service.RegisterWithKey(user));
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿using Core.Business.Concrete;
+﻿using Core.Business.Abstract;
+using Core.Business.Concrete;
+using Core.Entities.Concrete;
+using Core.Entities.Models;
 using HR.Business.Abstract;
 using HR.Business.Validation.FluentValidation;
 using HR.DataAccess.Abstract;
@@ -8,9 +11,14 @@ namespace HR.Business.Concrete
 {
     public class UserKeyManager : ManagerRepositoryBase<UserKey, IUserKeyRepository>, IUserKeyService
     {
-        public UserKeyManager(IUserKeyRepository repository) : base(repository)
+        private readonly IAuthService _authService;
+        private readonly IUserOperationClaimService _userOperationClaimService;
+
+        public UserKeyManager(IUserKeyRepository repository, IAuthService authService, IUserOperationClaimService userOperationClaimService) : base(repository)
         {
             base.SetValidator(new UserKeyValidator());
+            _authService = authService;
+            _userOperationClaimService = userOperationClaimService;
         }
 
         public UserKey Generate(int roleId)
@@ -102,6 +110,22 @@ namespace HR.Business.Concrete
             }
 
             return result;
+        }
+
+        public User RegisterWithKey(UserForRegisterModel user)
+        {
+            var key = Repository.Get(k => k.SecretKey == user.Code & (DateTime.Now - k.CreateDate).TotalMinutes < 10);
+
+            if (key is null)
+                throw new Exception("Key not found");
+
+            int roleId = ParseToken(user.Code);
+
+            var data = _authService.Register(user);
+
+            _userOperationClaimService.Add(new UserOperationClaim { OperationClaimId = roleId, UserId = data.Id });
+
+            return data;
         }
     }
 }

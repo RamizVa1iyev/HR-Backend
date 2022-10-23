@@ -21,6 +21,9 @@ namespace HR.Business.Dependency.Autofac
             builder.RegisterType<EfDiseaseBulletenRepository>().As<IDiseaseBulletenRepository>().SingleInstance();
             builder.RegisterType<EfVacationRepository>().As<IVacationRepository>().SingleInstance();
             builder.RegisterType<EfOvertimeRepository>().As<IOvertimeRepository>().SingleInstance();
+            builder.RegisterType<EfPermissionRepository>().As<IPermissionRepository>().SingleInstance();
+            builder.RegisterType<EfRewardRepository>().As<IRewardRepository>().SingleInstance();
+            builder.RegisterType<EfEmployeeRewardRepository>().As<IEmployeeRewardRepository>().SingleInstance();
 
             #endregion
 
@@ -32,6 +35,9 @@ namespace HR.Business.Dependency.Autofac
             builder.RegisterType<DiseaseBulletenManager>().As<IDiseaseBulletenService>().SingleInstance();
             builder.RegisterType<VacationManager>().As<IVacationService>().SingleInstance();
             builder.RegisterType<OvertimeManager>().As<IOvertimeService>().SingleInstance();
+            builder.RegisterType<PermissionManager>().As<IPermissionService>().SingleInstance();
+            builder.RegisterType<RewardManager>().As<IRewardService>().SingleInstance();
+            builder.RegisterType<EmployeeRewardManager>().As<IEmployeeRewardService>().SingleInstance();
 
             #endregion
 

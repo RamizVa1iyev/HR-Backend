@@ -218,6 +218,32 @@ namespace HR.DataAccess.Migrations
                     b.ToTable("Employees", (string)null);
                 });
 
+            modelBuilder.Entity("HR.Entities.Concrete.EmployeeReward", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("Date");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int")
+                        .HasColumnName("EmployeeId");
+
+                    b.Property<int>("RewardId")
+                        .HasColumnType("int")
+                        .HasColumnName("RewardId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("RewardId");
+
+                    b.ToTable("EmployeeRewards", (string)null);
+                });
+
             modelBuilder.Entity("HR.Entities.Concrete.Overtime", b =>
                 {
                     b.Property<int>("Id")
@@ -240,6 +266,57 @@ namespace HR.DataAccess.Migrations
                     b.HasIndex("EmployeeId");
 
                     b.ToTable("Overtimes", (string)null);
+                });
+
+            modelBuilder.Entity("HR.Entities.Concrete.Permission", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int")
+                        .HasColumnName("Count");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int")
+                        .HasColumnName("EmployeeId");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("EndDate");
+
+                    b.Property<int>("PermissionType")
+                        .HasColumnType("int")
+                        .HasColumnName("PermissionType");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("StartDate");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("Permissions", (string)null);
+                });
+
+            modelBuilder.Entity("HR.Entities.Concrete.Reward", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("Amount");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Rewards", (string)null);
                 });
 
             modelBuilder.Entity("HR.Entities.Concrete.State", b =>
@@ -346,10 +423,40 @@ namespace HR.DataAccess.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("HR.Entities.Concrete.EmployeeReward", b =>
+                {
+                    b.HasOne("HR.Entities.Concrete.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HR.Entities.Concrete.Reward", "Reward")
+                        .WithMany()
+                        .HasForeignKey("RewardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Reward");
+                });
+
             modelBuilder.Entity("HR.Entities.Concrete.Overtime", b =>
                 {
                     b.HasOne("HR.Entities.Concrete.Employee", "Employee")
                         .WithMany("Overtimes")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("HR.Entities.Concrete.Permission", b =>
+                {
+                    b.HasOne("HR.Entities.Concrete.Employee", "Employee")
+                        .WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

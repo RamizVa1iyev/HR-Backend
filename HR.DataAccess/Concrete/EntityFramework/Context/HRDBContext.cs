@@ -11,14 +11,16 @@ namespace HR.DataAccess.Concrete.EntityFramework.Context
         #region DbSet
         public DbSet<CalendarDay> CalendarDays { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<Overtime> Overtime { get; set; }
+        public DbSet<Overtime> Overtimes { get; set; }
         public DbSet<DiseaseBulleten> DiseaseBulletens { get; set; }
         public DbSet<Vacation> Vacations { get; set; }
-
+        public DbSet<Permission> Permissions { get; set; }
+        public DbSet<Reward> Rewards { get; set; }
+        public DbSet<EmployeeReward> EmployeeRewards { get; set; }
         #endregion
 
         public HRDBContext(DbContextOptions<HRDBContext> options) : base(options)
-        {            
+        {
 
 
         }
@@ -32,6 +34,9 @@ namespace HR.DataAccess.Concrete.EntityFramework.Context
             modelBuilder.ApplyConfiguration(new UserKeyMap());
             modelBuilder.ApplyConfiguration(new DiseaseBulletenMap());
             modelBuilder.ApplyConfiguration(new VacationMap());
+            modelBuilder.ApplyConfiguration(new PermissionMap());
+            modelBuilder.ApplyConfiguration(new RewardMap());
+            modelBuilder.ApplyConfiguration(new EmployeeRewardMap());
         }
     }
 }

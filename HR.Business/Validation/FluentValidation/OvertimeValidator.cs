@@ -12,9 +12,9 @@ namespace HR.Business.Validation.FluentValidation
     {
         public OvertimeValidator()
         {
-            RuleFor(o => o.EmployeeId).GreaterThan(0);
-            RuleFor(o => o.Date).GreaterThan(new DateTime());
-            RuleFor(o => o.HourCount).GreaterThan(0);
+            //RuleFor(o => o.EmployeeId).GreaterThan(0);
+            //RuleFor(o => o.Date).GreaterThan(new DateTime());
+            //RuleFor(o => o.HourCount).GreaterThan(0);
 
         }
     }

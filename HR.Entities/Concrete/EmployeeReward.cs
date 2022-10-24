@@ -7,6 +7,8 @@ namespace HR.Entities.Concrete
         public int EmployeeId { get; set; }
         public int RewardId { get; set; }
         public DateTime Date { get; set; }
+        public virtual Employee? Employee { get; set; }
+        public virtual Reward? Reward { get; set; }
 
         public EmployeeReward()
         {

@@ -1,6 +1,5 @@
 ﻿using Core.Entities.Concrete;
 using Core.Entities.Models;
-using Core.Features.Results.Abstract;
 using Core.Features.Security.Jwt;
 
 namespace Core.Business.Abstract
@@ -11,6 +10,6 @@ namespace Core.Business.Abstract
         User Login(UserForLoginModel userForLoginDto);
         void UserExists(string email);
         AccessToken CreateAccessToken(User user);
-        bool RegisterCheck(UserForRegisterModel model);
+        bool RegisterCheck(UserForRegisterCheckRequestModel model);
     }
 }

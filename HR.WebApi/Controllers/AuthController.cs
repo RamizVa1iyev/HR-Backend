@@ -34,7 +34,7 @@ namespace HR.WebApi.Controllers
         }
 
         [HttpPost("registercheck")]
-        public IActionResult RegisterCheck(UserForRegisterModel user)
+        public IActionResult RegisterCheck(UserForRegisterCheckRequestModel user)
         {
             return Ok(_authService.RegisterCheck(user));
         }

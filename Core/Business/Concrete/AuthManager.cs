@@ -56,7 +56,7 @@ namespace Core.Business.Concrete
             return userToCheck;
         }
 
-        public bool RegisterCheck(UserForRegisterModel userForRegister)
+        public bool RegisterCheck(UserForRegisterCheckRequestModel userForRegister)
         {
             var result = true;
 

@@ -124,6 +124,9 @@ namespace HR.Business.Concrete
             var data = _authService.Register(user);
 
             _userOperationClaimService.Add(new UserOperationClaim { OperationClaimId = roleId, UserId = data.Id });
+            key.UserId = data.Id;
+            key.IsUsed = true;
+            Repository.Update(key);
 
             return data;
         }

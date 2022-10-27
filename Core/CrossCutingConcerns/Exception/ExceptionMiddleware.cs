@@ -2,6 +2,7 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Net;
 
@@ -87,14 +88,14 @@ namespace Core.CCC.Exception
         {
             context.Response.StatusCode = Convert.ToInt32(HttpStatusCode.InternalServerError);
 
-            return context.Response.WriteAsync(new ProblemDetails
+            return context.Response.WriteAsync(JsonConvert.SerializeObject(new ProblemDetails
             {
                 Status = StatusCodes.Status500InternalServerError,
                 Type = "https://example.com/probs/internal",
                 Title = "Internal exception",
                 Detail = exception.Message,
                 Instance = ""
-            }.ToString());
+            }));
         }
     }
 }

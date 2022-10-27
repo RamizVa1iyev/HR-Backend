@@ -24,6 +24,7 @@ namespace HR.Business.Dependency.Autofac
             builder.RegisterType<EfPermissionRepository>().As<IPermissionRepository>().SingleInstance();
             builder.RegisterType<EfRewardRepository>().As<IRewardRepository>().SingleInstance();
             builder.RegisterType<EfEmployeeRewardRepository>().As<IEmployeeRewardRepository>().SingleInstance();
+            builder.RegisterType<EfUserKeyRepository>().As<IUserKeyRepository>().SingleInstance();
 
             #endregion
 
@@ -38,6 +39,7 @@ namespace HR.Business.Dependency.Autofac
             builder.RegisterType<PermissionManager>().As<IPermissionService>().SingleInstance();
             builder.RegisterType<RewardManager>().As<IRewardService>().SingleInstance();
             builder.RegisterType<EmployeeRewardManager>().As<IEmployeeRewardService>().SingleInstance();
+            builder.RegisterType<UserKeyManager>().As<IUserKeyService>().SingleInstance();
 
             #endregion
 

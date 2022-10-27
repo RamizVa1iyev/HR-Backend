@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Castle.DynamicProxy;
+using Core.Business.Abstract;
+using Core.Business.Concrete;
 using Core.Features.Interceptors;
 using HR.Business.Abstract;
 using HR.Business.Concrete;
@@ -40,6 +42,7 @@ namespace HR.Business.Dependency.Autofac
             builder.RegisterType<RewardManager>().As<IRewardService>().SingleInstance();
             builder.RegisterType<EmployeeRewardManager>().As<IEmployeeRewardService>().SingleInstance();
             builder.RegisterType<UserKeyManager>().As<IUserKeyService>().SingleInstance();
+            builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
 
             #endregion
 

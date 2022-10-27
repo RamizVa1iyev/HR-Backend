@@ -42,7 +42,6 @@ namespace HR.Business.Dependency.Autofac
             builder.RegisterType<RewardManager>().As<IRewardService>().SingleInstance();
             builder.RegisterType<EmployeeRewardManager>().As<IEmployeeRewardService>().SingleInstance();
             builder.RegisterType<UserKeyManager>().As<IUserKeyService>().SingleInstance();
-            builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
 
             #endregion
 

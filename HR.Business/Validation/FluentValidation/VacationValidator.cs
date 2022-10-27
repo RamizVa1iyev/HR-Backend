@@ -10,7 +10,6 @@ namespace HR.Business.Validation.FluentValidation
             RuleFor(c => c.EmployeeId).GreaterThan(0);
             RuleFor(c => c.StartDate).GreaterThan(new DateTime());
             RuleFor(c => c.EndDate).GreaterThan(new DateTime());
-            RuleFor(c => c.ComeWorkTime).GreaterThan(new DateTime());
         }
     }
 }

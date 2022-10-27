@@ -2,6 +2,8 @@
 using HR.DataAccess.Abstract;
 using HR.DataAccess.Concrete.EntityFramework.Context;
 using HR.Entities.Concrete;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace HR.DataAccess.Concrete.EntityFramework
 {
@@ -9,6 +11,14 @@ namespace HR.DataAccess.Concrete.EntityFramework
     {
         public EfUserKeyRepository(HRDBContext context) : base(context)
         {
+        }
+
+        public UserKey GetByKey(string key)
+        {
+            var result = from k in Context.UserKeys
+                         where k.SecretKey == key & EF.Functions.DateDiffMinute(k.CreateDate, DateTime.Now) < 10
+                         select k;
+            return result.FirstOrDefault();
         }
     }
 }

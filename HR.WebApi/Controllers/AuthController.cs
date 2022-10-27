@@ -1,4 +1,5 @@
 ﻿using Core.Business.Abstract;
+using Core.Entities.Concrete;
 using Core.Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,9 +10,14 @@ namespace HR.WebApi.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
-        public AuthController(IAuthService authService)
+        private readonly IUserService _userService;
+        private readonly IUserOperationClaimService _userOperationClaimService;
+
+        public AuthController(IAuthService authService, IUserService userService, IUserOperationClaimService userOperationClaimService)
         {
             _authService = authService;
+            _userService = userService;
+            _userOperationClaimService = userOperationClaimService;
         }
 
         [HttpPost("login")]
@@ -37,6 +43,18 @@ namespace HR.WebApi.Controllers
         public IActionResult RegisterCheck(UserForRegisterCheckRequestModel user)
         {
             return Ok(_authService.RegisterCheck(user));
+        }
+
+        [HttpGet("getroles")]
+        public IActionResult GetRoles(int userId)
+        {
+            return Ok(_userService.GetClaims(new User { Id = userId }));
+        }
+
+        [HttpGet("getallroles")]
+        public IActionResult GetAllRoles()
+        {
+            return Ok(_userOperationClaimService.GetAll());
         }
     }
 }

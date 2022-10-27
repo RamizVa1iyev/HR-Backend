@@ -43,14 +43,23 @@ namespace HR.Business.Concrete
             var roleHex = GetHex(roleId);
             var keyList = SplitNumbers(key);
             int target;
-            for (int i = 0; i < roleHex.Count; i++)
+
+            if(objId % keyList.Count == 0)
             {
-                target = (objId % keyList.Count) - 1;
-
-                keyList[target] = roleHex[i].ToString();
-                objId *= 2;
+                keyList[8] = roleHex[0].ToString();
+                keyList[0] = roleHex[1].ToString();
             }
+            else
+            {
+                for (int i = 0; i < roleHex.Count; i++)
+                {
+                    target = (objId % keyList.Count) - 1;
 
+                    keyList[target] = roleHex[i].ToString();
+                    objId *= 2;
+                }
+            }
+            
             return string.Join("", keyList);
         }
 
@@ -61,13 +70,20 @@ namespace HR.Business.Concrete
             var roleHex = "";
             var keyList = SplitNumbers(token);
 
-            for (int i = 0; i < 2; i++)
+            if(tokenId % keyList.Count == 0)
             {
-                target = (tokenId % keyList.Count) - 1;
-                roleHex += token[target];
-                tokenId *= 2;
+                roleHex = keyList[8].ToString() + keyList[0].ToString();
             }
-
+            else
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    target = (tokenId % keyList.Count) - 1;
+                    roleHex += token[target];
+                    tokenId *= 2;
+                }
+            }
+            
             return GetDecimal(roleHex);
         }
 
@@ -114,7 +130,9 @@ namespace HR.Business.Concrete
 
         public User RegisterWithKey(UserForRegisterModel user)
         {
-            var key = Repository.Get(k => k.SecretKey == user.Code & (DateTime.Now - k.CreateDate).TotalMinutes < 10);
+            //var currentDate = new DateTimeOffset(DateTime.Now);
+            //var key = Repository.Get(k => k.SecretKey == user.Code & (DateTime.Now - k.CreateDate).TotalMinutes < 10);
+            var key = Repository.GetByKey(user.Code);
 
             if (key is null)
                 throw new Exception("Key not found");

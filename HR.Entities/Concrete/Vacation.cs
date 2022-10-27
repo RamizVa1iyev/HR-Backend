@@ -7,7 +7,8 @@ namespace HR.Entities.Concrete
         public int EmployeeId { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public DateTime ComeWorkTime { get; set; }
+        public int VacationType { get; set; }
+        public string Note { get; set; }
 
         public Employee? Employee { get; set; }
         public Vacation()
@@ -15,12 +16,13 @@ namespace HR.Entities.Concrete
 
         }
 
-        public Vacation(int id, int employeeId, DateTime startDate, DateTime endDate, DateTime comeWorkTime) : base(id)
+        public Vacation(int id, int employeeId, DateTime startDate, DateTime endDate, int vacationType, string note) : base(id)
         {
             EmployeeId = employeeId;
             StartDate = startDate;
             EndDate = endDate;
-            ComeWorkTime = comeWorkTime;
+            VacationType = vacationType;
+            Note = note;
         }
     }
 }

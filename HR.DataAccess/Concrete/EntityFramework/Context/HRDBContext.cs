@@ -17,6 +17,8 @@ namespace HR.DataAccess.Concrete.EntityFramework.Context
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<Reward> Rewards { get; set; }
         public DbSet<EmployeeReward> EmployeeRewards { get; set; }
+        public DbSet<UserKey> UserKeys { get; set; }
+
         #endregion
 
         public HRDBContext(DbContextOptions<HRDBContext> options) : base(options)

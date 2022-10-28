@@ -17,6 +17,8 @@ namespace HR.Entities.Concrete
         public int DailyWorkHour { get; set; }
         public int OperatingMode { get; set; }
         public int Status { get; set; }
+        public int PreviousExperienceYear { get; set; }
+        public int PreviousExperienceMonth { get; set; }
         public virtual User? User { get; set; }
         public virtual Duty? Duty { get; set; }
 
@@ -29,7 +31,8 @@ namespace HR.Entities.Concrete
 
         }
 
-        public Employee(int id, string name, string surname, string fatherName, string finCode, int userId, string address, string phone, int gender, int dutyId, DateTime birthDay, int dailyWorkHour, int operatingMode, int status) : base(id)
+        public Employee(int id, string name, string surname, string fatherName, string finCode, int userId, string address, 
+            string phone, int gender, int dutyId, DateTime birthDay, int dailyWorkHour, int operatingMode, int status,int previosExperienceYear, int previosExperienceMonth) : base(id)
         {
             Name = name;
             Surname = surname;
@@ -44,6 +47,8 @@ namespace HR.Entities.Concrete
             DailyWorkHour = dailyWorkHour;
             OperatingMode = operatingMode;
             Status = status;
+            PreviousExperienceYear = previosExperienceYear;
+            PreviousExperienceMonth = previosExperienceMonth;
         }
     }
 }

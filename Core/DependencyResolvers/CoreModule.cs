@@ -26,6 +26,8 @@ namespace Core.DependencyResolvers
             serviceCollection.AddScoped<IUserRepository, EfUserRepository>();
             serviceCollection.AddScoped<IUserOperationClaimService, UserOperationClaimManager>();
             serviceCollection.AddScoped<IUserOperationClaimRepository, EfUserOperationClaimRepository>();
+            serviceCollection.AddScoped<IOperationClaimRepository, EfOperationClaimRepository>();
+            serviceCollection.AddScoped<IOperationClaimService, OperationClaimManager>();
         }
     }
 }

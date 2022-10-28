@@ -12,12 +12,14 @@ namespace HR.WebApi.Controllers
         private readonly IAuthService _authService;
         private readonly IUserService _userService;
         private readonly IUserOperationClaimService _userOperationClaimService;
+        private readonly IOperationClaimService _operationClaimService;
 
-        public AuthController(IAuthService authService, IUserService userService, IUserOperationClaimService userOperationClaimService)
+        public AuthController(IAuthService authService, IUserService userService, IUserOperationClaimService userOperationClaimService, IOperationClaimService operationClaimService)
         {
             _authService = authService;
             _userService = userService;
             _userOperationClaimService = userOperationClaimService;
+            _operationClaimService = operationClaimService;
         }
 
         [HttpPost("login")]
@@ -54,7 +56,7 @@ namespace HR.WebApi.Controllers
         [HttpGet("getallroles")]
         public IActionResult GetAllRoles()
         {
-            return Ok(_userOperationClaimService.GetAll());
+            return Ok(_operationClaimService.GetAll());
         }
     }
 }

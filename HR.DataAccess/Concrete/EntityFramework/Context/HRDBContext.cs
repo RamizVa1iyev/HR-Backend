@@ -18,6 +18,7 @@ namespace HR.DataAccess.Concrete.EntityFramework.Context
         public DbSet<Reward> Rewards { get; set; }
         public DbSet<EmployeeReward> EmployeeRewards { get; set; }
         public DbSet<UserKey> UserKeys { get; set; }
+        public DbSet<Contract> Contracts { get; set; }
 
         #endregion
 
@@ -39,6 +40,7 @@ namespace HR.DataAccess.Concrete.EntityFramework.Context
             modelBuilder.ApplyConfiguration(new PermissionMap());
             modelBuilder.ApplyConfiguration(new RewardMap());
             modelBuilder.ApplyConfiguration(new EmployeeRewardMap());
+            modelBuilder.ApplyConfiguration(new ContractMap());
         }
     }
 }

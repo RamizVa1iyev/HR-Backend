@@ -16,7 +16,7 @@ namespace HR.DataAccess.Concrete.EntityFramework
         public UserKey GetByKey(string key)
         {
             var result = from k in Context.UserKeys
-                         where k.SecretKey == key & EF.Functions.DateDiffMinute(k.CreateDate, DateTime.Now) < 10
+                         where k.SecretKey == key & EF.Functions.DateDiffMinute(k.CreateDate, DateTime.Now) < 10 & !k.IsUsed
                          select k;
             return result.FirstOrDefault();
         }

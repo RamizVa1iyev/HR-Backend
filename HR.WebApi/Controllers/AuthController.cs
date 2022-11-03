@@ -58,5 +58,11 @@ namespace HR.WebApi.Controllers
         {
             return Ok(_operationClaimService.GetAll());
         }
+
+        [HttpGet("getallusers")]
+        public IActionResult GetAllUsers()
+        {
+            return Ok(_userService.GetAll());
+        }
     }
 }

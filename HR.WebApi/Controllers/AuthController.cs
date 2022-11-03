@@ -2,6 +2,7 @@
 using Core.Entities.Concrete;
 using Core.Entities.Models;
 using Microsoft.AspNetCore.Mvc;
+using Nest;
 
 namespace HR.WebApi.Controllers
 {
@@ -63,6 +64,41 @@ namespace HR.WebApi.Controllers
         public IActionResult GetAllUsers()
         {
             return Ok(_userService.GetAll());
+        }
+
+        [HttpPut("editinfo")]
+        public IActionResult EditCommonUserInfo(UserUpdateRequestModel user)
+        {
+            var userToUpdate = Map<UserUpdateRequestModel, User>(user);
+            return Ok(_userService.UpdateCommonInfos(userToUpdate));
+        }
+
+        [HttpPut("switchuserstatus")]
+        public IActionResult BanUser(int userId, bool val)
+        {
+            return Ok(_userService.BanUser(userId, val));
+        }
+
+        [HttpPut("changepassword")]
+        public IActionResult ChangePassword(UserUpdatePasswordRequestModel user)
+        {
+            return Ok(_userService.UpdatePassword(user));
+        }
+
+        private TTarget Map<TCurrent, TTarget>(TCurrent source)
+        {
+            var data = Activator.CreateInstance<TTarget>();
+
+            var targetProperties = source.GetType().GetProperties();
+            var destinationProperties = data.GetType().GetProperties();
+
+            foreach (var dp in destinationProperties)
+            {
+                var val = targetProperties.FirstOrDefault(p => p.Name == dp.Name)?.GetValue(source);
+                dp.SetValue(data, val);
+            }
+
+            return data;
         }
     }
 }

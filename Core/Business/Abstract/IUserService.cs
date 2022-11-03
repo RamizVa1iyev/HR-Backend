@@ -7,5 +7,8 @@ namespace Core.Business.Abstract
     {
         List<OperationClaim> GetClaims(User user);
         User GetByMail(string email);
+        User UpdateCommonInfos(User user);
+        User BanUser(int userId, bool value);
+        User UpdatePassword(UserUpdatePasswordRequestModel user);
     }
 }

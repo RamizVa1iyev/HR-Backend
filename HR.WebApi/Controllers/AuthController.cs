@@ -66,20 +66,20 @@ namespace HR.WebApi.Controllers
             return Ok(_userService.GetAll());
         }
 
-        [HttpPut("editinfo")]
+        [HttpPost("editinfo")]
         public IActionResult EditCommonUserInfo(UserUpdateRequestModel user)
         {
             var userToUpdate = Map<UserUpdateRequestModel, User>(user);
             return Ok(_userService.UpdateCommonInfos(userToUpdate));
         }
 
-        [HttpPut("switchuserstatus")]
+        [HttpPost("switchuserstatus")]
         public IActionResult BanUser(int userId, bool val)
         {
             return Ok(_userService.BanUser(userId, val));
         }
 
-        [HttpPut("changepassword")]
+        [HttpPost("changepassword")]
         public IActionResult ChangePassword(UserUpdatePasswordRequestModel user)
         {
             return Ok(_userService.UpdatePassword(user));

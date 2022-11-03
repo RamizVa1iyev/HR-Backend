@@ -40,6 +40,7 @@ namespace HR.DataAccess.Concrete.EntityFramework.Mappings
             builder.HasMany(e => e.DiseaseBulletens);
             builder.HasMany(e => e.Vacations);
             builder.HasMany(e => e.Overtimes);
+            builder.HasMany(e => e.EmployeeRewards);
         }
     }
 }

@@ -25,6 +25,7 @@ namespace HR.Entities.Concrete
         public virtual ICollection<DiseaseBulleten>? DiseaseBulletens { get; set; }
         public virtual ICollection<Vacation>? Vacations { get; set; }
         public virtual ICollection<Overtime>? Overtimes { get; set; }
+        public virtual ICollection<EmployeeReward>? EmployeeRewards { get; set; }
 
         public Employee()
         {

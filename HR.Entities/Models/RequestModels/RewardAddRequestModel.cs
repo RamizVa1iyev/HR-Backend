@@ -9,5 +9,18 @@ namespace HR.Entities.Models.RequestModels
 {
     public class RewardAddRequestModel : IAddModel
     {
+        public string Name { get; set; }
+        public decimal Amount { get; set; }
+
+        public RewardAddRequestModel()
+        {
+
+        }
+
+        public RewardAddRequestModel(string name, decimal amount)
+        {
+            Name = name;
+            Amount = amount;
+        }
     }
 }

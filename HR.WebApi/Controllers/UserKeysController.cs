@@ -1,4 +1,5 @@
-﻿using Core.Entities.Models;
+﻿using Core.Business.Abstract;
+using Core.Entities.Models;
 using Core.WebAPI;
 using HR.Business.Abstract;
 using HR.Entities.Concrete;
@@ -11,8 +12,10 @@ namespace HR.WebApi.Controllers
     [ApiController]
     public class UserKeysController : BaseController<IUserKeyService, UserKey, UserKeyAddRequestModel, UserKeyUpdateRequestModel, UserKeyDeleteRequestModel>
     {
-        public UserKeysController(IUserKeyService service) : base(service)
+        private readonly IAuthService _authService;
+        public UserKeysController(IUserKeyService service, IAuthService authService) : base(service)
         {
+            _authService = authService;
         }
 
         [HttpGet("generatekey")]
@@ -24,7 +27,10 @@ namespace HR.WebApi.Controllers
         [HttpPost("registerwithkey")]
         public IActionResult RegisterWithKey(UserForRegisterModel user)
         {
-            return Ok(Service.RegisterWithKey(user));
+            var userToRegister = Service.RegisterWithKey(user);
+            var accessToken = _authService.CreateAccessToken(userToRegister);
+            var result = new UserRegisterResponseModel(userToRegister, accessToken);
+            return Ok(result);
         }
     }
 }

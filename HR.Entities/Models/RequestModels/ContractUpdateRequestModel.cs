@@ -1,12 +1,12 @@
-﻿
+﻿using Core.Entities.Abstract;
+
 namespace HR.Entities.Models.RequestModels
 {
-    public class ContractUpdateRequestModel
+    public class ContractUpdateRequestModel: IUpdateModel
     {
         public int Id { get; set; }
         public DateTime ContractStartDate { get; set; }
         public DateTime ContractEndDate { get; set; }
-        public string ContractNumber { get; set; }
         public long EmployeeId { get; set; }
         public ContractUpdateRequestModel()
         {
@@ -18,7 +18,6 @@ namespace HR.Entities.Models.RequestModels
             Id = id;
             ContractStartDate = contractStartDate;
             ContractEndDate = contractEndDate;
-            ContractNumber = contractNumber;
             EmployeeId = employeeId;
         }
     }

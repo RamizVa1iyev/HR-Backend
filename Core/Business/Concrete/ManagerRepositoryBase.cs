@@ -14,7 +14,7 @@ namespace Core.Business.Concrete
         public readonly TRepository Repository;
         private IValidator _validator;
 
-        protected ManagerRepositoryBase(TRepository repository)
+        public ManagerRepositoryBase(TRepository repository)
         {
             Repository = repository;
         }

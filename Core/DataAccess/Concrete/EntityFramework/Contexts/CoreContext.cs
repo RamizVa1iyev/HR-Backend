@@ -25,6 +25,7 @@ namespace Core.DataAccess.Concrete.EntityFramework.Contexts
             modelBuilder.ApplyConfiguration(new UserMap());
             modelBuilder.ApplyConfiguration(new OperationClaimMap());
             modelBuilder.ApplyConfiguration(new UserOperationClaimMap());
+
         }
     }
 }

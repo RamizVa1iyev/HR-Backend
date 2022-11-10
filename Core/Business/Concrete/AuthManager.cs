@@ -48,10 +48,17 @@ namespace Core.Business.Concrete
                 throw new AuthorizationException(Messages.UserNotFound);
             }
 
+            if (!userToCheck.Status)
+            {
+                throw new AuthorizationException(Messages.BannedUser);
+            }
+
             if (!HashingHelper.VerifyPasswordHash(userForLogin.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
             {
                 throw new AuthorizationException(Messages.PasswordError);
             }
+
+            
 
             return userToCheck;
         }

@@ -18,6 +18,7 @@ namespace Core.Constants
         public static readonly string PasswordError = "Password error!";
         public static readonly string UserNotFound = "User not found!";
         public static readonly string UserRegistered = "User registered successfully!";
+        public static readonly string BannedUser = "User is not active!";
 
         public const string Added = "Added successfully.";
         public const string Updated = "Updated successfully.";

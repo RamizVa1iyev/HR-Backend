@@ -19,6 +19,7 @@ namespace Core.DataAccess.Concrete.EntityFramework.Mappings
             builder.Property(u => u.PasswordHash).HasColumnName("PasswordHash");
             builder.Property(u => u.PasswordSalt).HasColumnName("PasswordSalt");
             builder.Property(u => u.Status).HasColumnName("Status");
+            
             //builder.Property(u => u.AuthenticatorType).HasColumnName("AuthenticatorType");
         }
     }

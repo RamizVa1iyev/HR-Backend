@@ -28,6 +28,7 @@ namespace HR.Business.Dependency.Autofac
             builder.RegisterType<EfEmployeeRewardRepository>().As<IEmployeeRewardRepository>().SingleInstance();
             builder.RegisterType<EfUserKeyRepository>().As<IUserKeyRepository>().SingleInstance();
             builder.RegisterType<EfContractRepository>().As<IContractRepository>().SingleInstance();
+            builder.RegisterType<EfNotificationRepository>().As<INotificationRepository>().SingleInstance();
 
             #endregion
 
@@ -44,6 +45,7 @@ namespace HR.Business.Dependency.Autofac
             builder.RegisterType<EmployeeRewardManager>().As<IEmployeeRewardService>().SingleInstance();
             builder.RegisterType<UserKeyManager>().As<IUserKeyService>().SingleInstance();
             builder.RegisterType<ContractManager>().As<IContractService>().SingleInstance();
+            builder.RegisterType<NotificationManager>().As<INotificationService>().SingleInstance();
 
             #endregion
 

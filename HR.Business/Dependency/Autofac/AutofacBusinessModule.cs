@@ -17,35 +17,35 @@ namespace HR.Business.Dependency.Autofac
         {
             #region DataAccess
 
-            builder.RegisterType<EfStateRepository>().As<IStateRepository>().SingleInstance();
-            builder.RegisterType<EfCalendarDayRepository>().As<ICalendarDayRepository>().SingleInstance();
-            builder.RegisterType<EfEmployeeRepository>().As<IEmployeeRepository>().SingleInstance();
-            builder.RegisterType<EfDiseaseBulletenRepository>().As<IDiseaseBulletenRepository>().SingleInstance();
-            builder.RegisterType<EfVacationRepository>().As<IVacationRepository>().SingleInstance();
-            builder.RegisterType<EfOvertimeRepository>().As<IOvertimeRepository>().SingleInstance();
-            builder.RegisterType<EfPermissionRepository>().As<IPermissionRepository>().SingleInstance();
-            builder.RegisterType<EfRewardRepository>().As<IRewardRepository>().SingleInstance();
-            builder.RegisterType<EfEmployeeRewardRepository>().As<IEmployeeRewardRepository>().SingleInstance();
-            builder.RegisterType<EfUserKeyRepository>().As<IUserKeyRepository>().SingleInstance();
-            builder.RegisterType<EfContractRepository>().As<IContractRepository>().SingleInstance();
-            builder.RegisterType<EfNotificationRepository>().As<INotificationRepository>().SingleInstance();
+            builder.RegisterType<EfStateRepository>().As<IStateRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<EfCalendarDayRepository>().As<ICalendarDayRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<EfEmployeeRepository>().As<IEmployeeRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<EfDiseaseBulletenRepository>().As<IDiseaseBulletenRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<EfVacationRepository>().As<IVacationRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<EfOvertimeRepository>().As<IOvertimeRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<EfPermissionRepository>().As<IPermissionRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<EfRewardRepository>().As<IRewardRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<EfEmployeeRewardRepository>().As<IEmployeeRewardRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<EfUserKeyRepository>().As<IUserKeyRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<EfContractRepository>().As<IContractRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<EfNotificationRepository>().As<INotificationRepository>().InstancePerLifetimeScope();
 
             #endregion
 
             #region Business
 
-            builder.RegisterType<StateManager>().As<IStateService>().SingleInstance();
-            builder.RegisterType<CalendarDayManager>().As<ICalendarDayService>().SingleInstance();
-            builder.RegisterType<EmployeeManager>().As<IEmployeeService>().SingleInstance();
-            builder.RegisterType<DiseaseBulletenManager>().As<IDiseaseBulletenService>().SingleInstance();
-            builder.RegisterType<VacationManager>().As<IVacationService>().SingleInstance();
-            builder.RegisterType<OvertimeManager>().As<IOvertimeService>().SingleInstance();
-            builder.RegisterType<PermissionManager>().As<IPermissionService>().SingleInstance();
-            builder.RegisterType<RewardManager>().As<IRewardService>().SingleInstance();
-            builder.RegisterType<EmployeeRewardManager>().As<IEmployeeRewardService>().SingleInstance();
-            builder.RegisterType<UserKeyManager>().As<IUserKeyService>().SingleInstance();
-            builder.RegisterType<ContractManager>().As<IContractService>().SingleInstance();
-            builder.RegisterType<NotificationManager>().As<INotificationService>().SingleInstance();
+            builder.RegisterType<StateManager>().As<IStateService>().InstancePerLifetimeScope();
+            builder.RegisterType<CalendarDayManager>().As<ICalendarDayService>().InstancePerLifetimeScope();
+            builder.RegisterType<EmployeeManager>().As<IEmployeeService>().InstancePerLifetimeScope();
+            builder.RegisterType<DiseaseBulletenManager>().As<IDiseaseBulletenService>().InstancePerLifetimeScope();
+            builder.RegisterType<VacationManager>().As<IVacationService>().InstancePerLifetimeScope();
+            builder.RegisterType<OvertimeManager>().As<IOvertimeService>().InstancePerLifetimeScope();
+            builder.RegisterType<PermissionManager>().As<IPermissionService>().InstancePerLifetimeScope();
+            builder.RegisterType<RewardManager>().As<IRewardService>().InstancePerLifetimeScope();
+            builder.RegisterType<EmployeeRewardManager>().As<IEmployeeRewardService>().InstancePerLifetimeScope();
+            builder.RegisterType<UserKeyManager>().As<IUserKeyService>().InstancePerLifetimeScope();
+            builder.RegisterType<ContractManager>().As<IContractService>().InstancePerLifetimeScope();
+            builder.RegisterType<NotificationManager>().As<INotificationService>().InstancePerLifetimeScope();
 
             #endregion
 
@@ -55,7 +55,7 @@ namespace HR.Business.Dependency.Autofac
                     .EnableInterfaceInterceptors(new ProxyGenerationOptions
                     {
                         Selector = new AspectInterceptorSelector()
-                    }).SingleInstance();
+                    }).InstancePerLifetimeScope();
         }
     }
 }

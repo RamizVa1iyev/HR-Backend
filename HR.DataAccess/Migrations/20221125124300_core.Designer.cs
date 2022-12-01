@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HR.DataAccess.Migrations
 {
     [DbContext(typeof(HRDBContext))]
-    [Migration("20221023132645_Add-Permission")]
-    partial class AddPermission
+    [Migration("20221125124300_core")]
+    partial class core
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -76,6 +76,38 @@ namespace HR.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CalendarDays", (string)null);
+                });
+
+            modelBuilder.Entity("HR.Entities.Concrete.Contract", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ContractEndDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("ContractEndDate");
+
+                    b.Property<string>("ContractNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ContractNumber");
+
+                    b.Property<DateTime>("ContractStartDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("ContractStartDate");
+
+                    b.Property<long>("EmployeeId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("EmployeeId");
+
+                    b.Property<int?>("EmployeeId1")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId1");
+
+                    b.ToTable("Contracts", (string)null);
                 });
 
             modelBuilder.Entity("HR.Entities.Concrete.DiseaseBulleten", b =>
@@ -198,6 +230,14 @@ namespace HR.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Phone");
 
+                    b.Property<int>("PreviousExperienceMonth")
+                        .HasColumnType("int")
+                        .HasColumnName("PreviousExperienceMonth");
+
+                    b.Property<int>("PreviousExperienceYear")
+                        .HasColumnType("int")
+                        .HasColumnName("PreviousExperienceYear");
+
                     b.Property<int>("Status")
                         .HasColumnType("int")
                         .HasColumnName("Status");
@@ -244,6 +284,37 @@ namespace HR.DataAccess.Migrations
                     b.HasIndex("RewardId");
 
                     b.ToTable("EmployeeRewards", (string)null);
+                });
+
+            modelBuilder.Entity("HR.Entities.Concrete.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int")
+                        .HasColumnName("EmployeeId");
+
+                    b.Property<int>("NotificationType")
+                        .HasColumnType("int")
+                        .HasColumnName("NotificationType");
+
+                    b.Property<int>("RecordId")
+                        .HasColumnType("int")
+                        .HasColumnName("RecordId");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit")
+                        .HasColumnName("Status");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Title");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Notifications", (string)null);
                 });
 
             modelBuilder.Entity("HR.Entities.Concrete.Overtime", b =>
@@ -372,10 +443,6 @@ namespace HR.DataAccess.Migrations
                     b.Property<int>("Id")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ComeWorkTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("ComeWorkTime");
-
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int")
                         .HasColumnName("EmployeeId");
@@ -384,15 +451,31 @@ namespace HR.DataAccess.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("EndDate");
 
+                    b.Property<string>("Note")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2")
                         .HasColumnName("StartDate");
+
+                    b.Property<int>("VacationType")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("EmployeeId");
 
                     b.ToTable("Vacations", (string)null);
+                });
+
+            modelBuilder.Entity("HR.Entities.Concrete.Contract", b =>
+                {
+                    b.HasOne("HR.Entities.Concrete.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId1");
+
+                    b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("HR.Entities.Concrete.DiseaseBulleten", b =>
@@ -428,7 +511,7 @@ namespace HR.DataAccess.Migrations
             modelBuilder.Entity("HR.Entities.Concrete.EmployeeReward", b =>
                 {
                     b.HasOne("HR.Entities.Concrete.Employee", "Employee")
-                        .WithMany()
+                        .WithMany("EmployeeRewards")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -480,6 +563,8 @@ namespace HR.DataAccess.Migrations
             modelBuilder.Entity("HR.Entities.Concrete.Employee", b =>
                 {
                     b.Navigation("DiseaseBulletens");
+
+                    b.Navigation("EmployeeRewards");
 
                     b.Navigation("Overtimes");
 

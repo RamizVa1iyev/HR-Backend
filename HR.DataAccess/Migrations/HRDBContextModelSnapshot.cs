@@ -284,6 +284,37 @@ namespace HR.DataAccess.Migrations
                     b.ToTable("EmployeeRewards", (string)null);
                 });
 
+            modelBuilder.Entity("HR.Entities.Concrete.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int")
+                        .HasColumnName("EmployeeId");
+
+                    b.Property<int>("NotificationType")
+                        .HasColumnType("int")
+                        .HasColumnName("NotificationType");
+
+                    b.Property<int>("RecordId")
+                        .HasColumnType("int")
+                        .HasColumnName("RecordId");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit")
+                        .HasColumnName("Status");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Title");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Notifications", (string)null);
+                });
+
             modelBuilder.Entity("HR.Entities.Concrete.Overtime", b =>
                 {
                     b.Property<int>("Id")

@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <Folder Include="Concrete\EntityFramework\Context\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
   
 </Project>

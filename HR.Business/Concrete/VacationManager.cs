@@ -12,5 +12,10 @@ namespace HR.Business.Concrete
         {
             base.SetValidator(new VacationValidator());
         }
+
+        public List<Vacation> GetVacationByEmployee(int employeeId)
+        {
+            return Repository.GetAll(e => e.EmployeeId == employeeId);
+        }
     }
 }

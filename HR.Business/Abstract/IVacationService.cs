@@ -5,5 +5,6 @@ namespace HR.Business.Abstract
 {
     public interface IVacationService : IExtendedServiceRepository<Vacation>
     {
+        List<Vacation> GetVacationByEmployee(int employeeId);
     }
 }

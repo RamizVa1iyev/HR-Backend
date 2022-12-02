@@ -20,6 +20,8 @@ namespace HR.DataAccess.Concrete.EntityFramework.Context
         public DbSet<UserKey> UserKeys { get; set; }
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<State> States { get; set; }
+        public DbSet<Duty> Duties { get; set; }
 
         #endregion
 

@@ -5,5 +5,6 @@ namespace HR.DataAccess.Abstract
 {
     public interface IDiseaseBulletenRepository: IExtendedRepository<DiseaseBulleten>
     {
+
     }
 }

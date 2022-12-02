@@ -10,5 +10,6 @@ namespace HR.Business.Abstract
 {
     public interface IDiseaseBulletenService: IExtendedServiceRepository<DiseaseBulleten>
     {
+        List<DiseaseBulleten> GetDiseaseBulletenByEmployee(int employeeId);
     }
 }

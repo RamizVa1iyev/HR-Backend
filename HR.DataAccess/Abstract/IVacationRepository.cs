@@ -10,5 +10,6 @@ namespace HR.DataAccess.Abstract
 {
     public interface IVacationRepository : IExtendedRepository<Vacation>
     {
+
     }
 }

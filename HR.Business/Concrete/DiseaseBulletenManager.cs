@@ -12,5 +12,10 @@ namespace HR.Business.Concrete
         {
             base.SetValidator(new DiseaseBulletinValidator());
         }
+
+        public List<DiseaseBulleten> GetDiseaseBulletenByEmployee(int employeeId)
+        {
+            return Repository.GetAll(d => d.EmployeeId == employeeId);
+        }
     }
 }

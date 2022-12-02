@@ -29,6 +29,7 @@ namespace HR.Business.Dependency.Autofac
             builder.RegisterType<EfUserKeyRepository>().As<IUserKeyRepository>().InstancePerLifetimeScope();
             builder.RegisterType<EfContractRepository>().As<IContractRepository>().InstancePerLifetimeScope();
             builder.RegisterType<EfNotificationRepository>().As<INotificationRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<EfDutyRepository>().As<IDutyRepository>().InstancePerLifetimeScope();
 
             #endregion
 
@@ -46,6 +47,7 @@ namespace HR.Business.Dependency.Autofac
             builder.RegisterType<UserKeyManager>().As<IUserKeyService>().InstancePerLifetimeScope();
             builder.RegisterType<ContractManager>().As<IContractService>().InstancePerLifetimeScope();
             builder.RegisterType<NotificationManager>().As<INotificationService>().InstancePerLifetimeScope();
+            builder.RegisterType<DutyManager>().As<IDutyService>().InstancePerLifetimeScope();
 
             #endregion
 

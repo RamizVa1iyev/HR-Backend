@@ -45,6 +45,7 @@ namespace HR.DataAccess.Concrete.EntityFramework.Context
             modelBuilder.ApplyConfiguration(new EmployeeRewardMap());
             modelBuilder.ApplyConfiguration(new ContractMap());
             modelBuilder.ApplyConfiguration(new NotificationMap());
+            modelBuilder.ApplyConfiguration(new DutyMap());
         }
     }
 }

@@ -41,11 +41,10 @@ namespace HR.WebApi.Controllers
             return BadRequest("Notification does not match specified types.");
         }
 
-        [HttpGet("getbyemployee")]
-        public IActionResult GetByEmployee(int employeeId)
+        [HttpGet("getbyuser")]
+        public IActionResult GetByUser(int userId)
         {
-            return Ok(Service.GetByEmployee(employeeId));
+            return Ok(Service.GetByUser(userId));
         }
-
     }
 }

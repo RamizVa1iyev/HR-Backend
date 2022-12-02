@@ -9,8 +9,8 @@ namespace HR.Business.Validation.FluentValidation
         {
             RuleFor(n => n.Title).NotNull();
             RuleFor(n => n.Title).MinimumLength(3);
-            RuleFor(n => n.EmployeeId).NotNull();
-            RuleFor(n => n.EmployeeId).GreaterThanOrEqualTo(0);
+            RuleFor(n => n.UserId).NotNull();
+            RuleFor(n => n.UserId).GreaterThanOrEqualTo(0);
             RuleFor(n => n.NotificationType).NotNull();
         }
     }

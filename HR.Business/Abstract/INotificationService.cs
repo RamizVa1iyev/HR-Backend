@@ -12,6 +12,6 @@ namespace HR.Business.Abstract
         Permission Permission(int notificationId);
         Vacation Vacation(int notificationId);
         NotificationTypes GetNotificationType(int notificationId);
-        List<Notification> GetByEmployee(int employeeId);
+        List<Notification> GetByUser(int userId);
     }
 }

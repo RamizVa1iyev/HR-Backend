@@ -33,9 +33,9 @@ namespace HR.Business.Concrete
             return data;
         }
 
-        public List<Notification> GetByEmployee(int employeeId)
+        public List<Notification> GetByUser(int userId)
         {
-            return Repository.GetAll(n => n.EmployeeId == employeeId & !n.Status);
+            return Repository.GetAll(n => n.UserId == userId);
         }
 
         public NotificationTypes GetNotificationType(int notificationId)

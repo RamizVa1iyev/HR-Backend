@@ -10,5 +10,6 @@ namespace HR.Business.Abstract
 {
     public interface IPermissionService:IExtendedServiceRepository<Permission>
     {
+        List<Permission> GetPermissionByEmployee(int employeeId);
     }
 }

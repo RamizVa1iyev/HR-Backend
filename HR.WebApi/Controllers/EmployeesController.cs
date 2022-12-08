@@ -15,5 +15,17 @@ namespace HR.WebApi.Controllers
         {
 
         }
+
+        [HttpGet("getbyuser")]
+        public IActionResult GetByUser(int userId)
+        {
+            return Ok(Service.GetEmployeeByUser(userId));
+        }
+
+        [HttpGet("getbyduty")]
+        public IActionResult GetByDuty(int dutyId)
+        {
+            return Ok(Service.GetEmployeeByDuty(dutyId));
+        }
     }
 }

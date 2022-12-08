@@ -17,5 +17,10 @@ namespace HR.Business.Concrete
         {
             base.SetValidator(new PermissionValidator());
         }
+
+        public List<Permission> GetPermissionByEmployee(int employeeId)
+        {
+            return Repository.GetAll(p => p.EmployeeId == employeeId);
+        }
     }
 }

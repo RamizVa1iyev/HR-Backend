@@ -1,6 +1,8 @@
 ﻿using Core.Business.Abstract;
 using Core.Entities.Concrete;
 using Core.Entities.Models;
+using HR.Business.Abstract;
+using HR.Entities.Models.ResponseModels;
 using Microsoft.AspNetCore.Mvc;
 using Nest;
 
@@ -14,13 +16,15 @@ namespace HR.WebApi.Controllers
         private readonly IUserService _userService;
         private readonly IUserOperationClaimService _userOperationClaimService;
         private readonly IOperationClaimService _operationClaimService;
+        private readonly IEmployeeService _employeeService;
 
-        public AuthController(IAuthService authService, IUserService userService, IUserOperationClaimService userOperationClaimService, IOperationClaimService operationClaimService)
+        public AuthController(IAuthService authService, IUserService userService, IUserOperationClaimService userOperationClaimService, IOperationClaimService operationClaimService, IEmployeeService employeeService)
         {
             _authService = authService;
             _userService = userService;
             _userOperationClaimService = userOperationClaimService;
             _operationClaimService = operationClaimService;
+            _employeeService = employeeService;
         }
 
         [HttpPost("login")]
@@ -51,7 +55,9 @@ namespace HR.WebApi.Controllers
         [HttpGet("getroles")]
         public IActionResult GetRoles(int userId)
         {
-            return Ok(_userService.GetClaims(new User { Id = userId }));
+            var response = new UserRoleResponseModel
+                (_userService.GetClaims(new User { Id = userId }), _employeeService.GetByUserId(userId).Id);
+            return Ok(response);
         }
 
         [HttpGet("getallroles")]

@@ -19,6 +19,11 @@ namespace HR.Business.Concrete
             base.SetValidator(new EmployeeValidator());
         }
 
+        public Employee GetByUserId(int userId)
+        {
+            return Repository.Get(e => e.UserId== userId);
+        }
+
         public List<Employee> GetEmployeeByDuty(int dutyId)
         {
            return Repository.GetAll(e=>e.DutyId == dutyId);

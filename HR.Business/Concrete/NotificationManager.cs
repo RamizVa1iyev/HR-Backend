@@ -25,6 +25,26 @@ namespace HR.Business.Concrete
             _vacationService = vacationService;
         }
 
+        public Notification AddNotification(Employee employee)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Notification AddNotification(DiseaseBulleten disease)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Notification AddNotification(Permission permission)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Notification AddNotification(Vacation vacation)
+        {
+            throw new NotImplementedException();
+        }
+
         public DiseaseBulleten Disease(int notificationId)
         {
             var notification = Repository.Get(n => n.Id == notificationId);

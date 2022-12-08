@@ -18,12 +18,4 @@ namespace HR.Business.Concrete
             base.SetValidator(new RewardValidator());
         }
     }
-
-    public class EmployeeRewardManager : ManagerRepositoryBase<EmployeeReward, IEmployeeRewardRepository>, IEmployeeRewardService
-    {
-        public EmployeeRewardManager(IEmployeeRewardRepository repository) : base(repository)
-        {
-            base.SetValidator(new EmployeeRewardValidator());
-        }
-    }
 }

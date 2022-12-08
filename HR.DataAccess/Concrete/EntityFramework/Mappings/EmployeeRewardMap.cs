@@ -19,6 +19,7 @@ namespace HR.DataAccess.Concrete.EntityFramework.Mappings
 
             builder.HasOne(r => r.Employee);
             builder.HasOne(r => r.Reward);
+
         }
     }
 }

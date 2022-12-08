@@ -14,5 +14,11 @@ namespace HR.WebApi.Controllers
         public OvertimesController(IOvertimeService service) : base(service)
         {
         }
+
+        [HttpGet("getbyemployee")]
+        public IActionResult GetByEmployee(int employeeId)
+        {
+            return Ok(Service.GetOvertimeByEmployee(employeeId));
+        }
     }
 }

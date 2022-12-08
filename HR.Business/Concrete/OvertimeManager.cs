@@ -17,5 +17,10 @@ namespace HR.Business.Concrete
         {
             base.SetValidator(new OvertimeValidator());
         }
+
+        public List<Overtime> GetOvertimeByEmployee(int employeeId)
+        {
+            return Repository.GetAll(o => o.EmployeeId == employeeId);
+        }
     }
 }

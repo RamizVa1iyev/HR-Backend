@@ -10,5 +10,6 @@ namespace HR.Business.Abstract
 {
     public interface IOvertimeService : IExtendedServiceRepository<Overtime>
     {
+        List<Overtime> GetOvertimeByEmployee(int employeeId);
     }
 }

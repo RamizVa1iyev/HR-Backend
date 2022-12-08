@@ -10,6 +10,7 @@ namespace HR.Business.Abstract
 {
     public interface IEmployeeService : IExtendedServiceRepository<Employee>
     {
-
+        List<Employee> GetEmployeeByUser(int userId);
+        List<Employee> GetEmployeeByDuty(int dutyId);
     }
 }

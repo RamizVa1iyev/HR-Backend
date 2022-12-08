@@ -14,5 +14,17 @@ namespace HR.WebApi.Controllers
         public EmployeeRewardsController(IEmployeeRewardService service) : base(service)
         {
         }
+
+        [HttpGet("getbyemployee")]
+        public IActionResult GetByEmployee(int employeeId)
+        {
+            return Ok(Service.GetEmployeeRewardByEmployee(employeeId));
+        }
+
+        [HttpGet("getbyreward")]
+        public IActionResult GetByReward(int rewardId)
+        {
+            return Ok(Service.GetEmployeeRewardByReward(rewardId));
+        }
     }
 }

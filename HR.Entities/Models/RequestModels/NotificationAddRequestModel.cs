@@ -9,17 +9,17 @@ namespace HR.Entities.Models.RequestModels
         {
 
         }
-        public NotificationAddRequestModel(string title, NotificationTypes notificationType, int userId, bool used)
+        public NotificationAddRequestModel(string title, NotificationTypes notificationType, int userId, Status status)
         {
             Title = title;
             NotificationType = notificationType;
             UserId = userId;
-            Used = used;
+            Status = status;
         }
 
         public string Title { get; set; }
         public NotificationTypes NotificationType { get; set; }
         public int UserId { get; set; }
-        public bool Used { get; set; }
+        public Status Status { get; set; }
     }
 }

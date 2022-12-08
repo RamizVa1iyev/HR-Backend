@@ -5,6 +5,7 @@ namespace HR.Entities.Models.RequestModels
 {
     public class EmployeeUpdateRequestModel : IUpdateModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string FatherName { get; set; }
@@ -25,10 +26,11 @@ namespace HR.Entities.Models.RequestModels
 
         }
 
-        public EmployeeUpdateRequestModel(string name, string surname, string fatherName, string finCode, int userId,
+        public EmployeeUpdateRequestModel(int id, string name, string surname, string fatherName, string finCode, int userId,
             string address, string phone, int gender, int dutyId, DateTime birthDay, int dailyWorkHour, int operatingMode,
             Status status, int previousExperienceYear, int previousExperienceMonth)
         {
+            Id = id;
             Name = name;
             Surname = surname;
             FatherName = fatherName;

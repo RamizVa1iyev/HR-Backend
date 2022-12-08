@@ -9,19 +9,21 @@ namespace HR.Entities.Concrete
         {
 
         }
-        public Notification(int id, string title, NotificationTypes notificationType, int userId, bool status)
+
+        public Notification(int id, string title, NotificationTypes notificationType, int userId, Status status, int recordId)
         {
             Id = id;
             Title = title;
             NotificationType = notificationType;
             UserId = userId;
             Status = status;
+            RecordId = recordId;
         }
 
         public string Title { get; set; }
         public NotificationTypes NotificationType { get; set; }
         public int UserId { get; set; }
-        public bool Status { get; set; }
+        public Status Status { get; set; }
         public int RecordId { get; set; }
     }
 }

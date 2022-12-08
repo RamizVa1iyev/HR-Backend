@@ -48,6 +48,7 @@ namespace HR.Business.Dependency.Autofac
             builder.RegisterType<ContractManager>().As<IContractService>().InstancePerLifetimeScope();
             builder.RegisterType<NotificationManager>().As<INotificationService>().InstancePerLifetimeScope();
             builder.RegisterType<DutyManager>().As<IDutyService>().InstancePerLifetimeScope();
+            builder.RegisterType<NotificationHelperManager>().As<INotificationHelperService>().InstancePerLifetimeScope();
 
             #endregion
 

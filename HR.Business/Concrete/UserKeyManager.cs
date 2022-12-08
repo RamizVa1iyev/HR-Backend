@@ -15,9 +15,9 @@ namespace HR.Business.Concrete
         private readonly IAuthService _authService;
         private readonly IUserOperationClaimService _userOperationClaimService;
         private readonly IEmployeeService _employeeService;
-        private readonly INotificationService _notificationService;
+        private readonly INotificationHelperService _notificationService;
 
-        public UserKeyManager(IUserKeyRepository repository, IAuthService authService, IUserOperationClaimService userOperationClaimService, IEmployeeService employeeService, INotificationService notificationService) : base(repository)
+        public UserKeyManager(IUserKeyRepository repository, IAuthService authService, IUserOperationClaimService userOperationClaimService, IEmployeeService employeeService, INotificationHelperService notificationService) : base(repository)
         {
             base.SetValidator(new UserKeyValidator());
             _authService = authService;
@@ -152,6 +152,8 @@ namespace HR.Business.Concrete
             var employee = new Employee(0, data.FirstName, data.LastName, "", "", data.Id, "", "", 0, 0, DateTime.MinValue, 0, 0, Status.Pending, 0, 0);
 
             employee = _employeeService.Add(employee);
+
+            _notificationService.AddNotification(employee);
 
             return data;
         }

@@ -10,7 +10,8 @@ namespace HR.Entities.Concrete
         public int VacationType { get; set; }
         public string Note { get; set; }
 
-        public Employee? Employee { get; set; }
+        //public Employee? Employee { get; set; }
+
         public Vacation()
         {
 

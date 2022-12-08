@@ -1,4 +1,5 @@
-﻿using Core.Business.Concrete;
+﻿using Core.Business.Abstract;
+using Core.Business.Concrete;
 using HR.Business.Abstract;
 using HR.Business.Validation.FluentValidation;
 using HR.DataAccess.Abstract;
@@ -10,39 +11,17 @@ namespace HR.Business.Concrete
     public class NotificationManager : ManagerRepositoryBase<Notification, INotificationRepository>, INotificationService
     {
         private readonly IDiseaseBulletenService _diseaseBulletenService;
-        private readonly IOvertimeService _overtimeService;
         private readonly IPermissionService _permissionService;
         private readonly IEmployeeService _employeeService;
         private readonly IVacationService _vacationService;
 
-        public NotificationManager(INotificationRepository repository, IDiseaseBulletenService diseaseBulletenService, IOvertimeService overtimeService, IPermissionService permissionService, IEmployeeService employeeService, IVacationService vacationService) : base(repository)
+        public NotificationManager(INotificationRepository repository, IDiseaseBulletenService diseaseBulletenService, IPermissionService permissionService, IEmployeeService employeeService, IVacationService vacationService) : base(repository)
         {
             base.SetValidator(new NotificationValidator());
             _diseaseBulletenService = diseaseBulletenService;
-            _overtimeService = overtimeService;
             _permissionService = permissionService;
             _employeeService = employeeService;
             _vacationService = vacationService;
-        }
-
-        public Notification AddNotification(Employee employee)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Notification AddNotification(DiseaseBulleten disease)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Notification AddNotification(Permission permission)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Notification AddNotification(Vacation vacation)
-        {
-            throw new NotImplementedException();
         }
 
         public DiseaseBulleten Disease(int notificationId)

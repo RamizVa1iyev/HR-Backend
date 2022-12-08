@@ -1,9 +1,5 @@
 ﻿using Core.Entities.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HR.Entities.Constants;
 
 namespace HR.Entities.Models.RequestModels
 {
@@ -21,7 +17,7 @@ namespace HR.Entities.Models.RequestModels
         public DateTime BirthDay { get; set; }
         public int DailyWorkHour { get; set; }
         public int OperatingMode { get; set; }
-        public int Status { get; set; }
+        public Status Status { get; set; }
         public int PreviousExperienceYear { get; set; }
         public int PreviousExperienceMonth { get; set; }
         public EmployeeUpdateRequestModel()
@@ -29,9 +25,9 @@ namespace HR.Entities.Models.RequestModels
 
         }
 
-        public EmployeeUpdateRequestModel(string name, string surname, string fatherName, string finCode, int userId, 
-            string address, string phone, int gender, int dutyId, DateTime birthDay, int dailyWorkHour, int operatingMode, 
-            int status, int previousExperienceYear, int previousExperienceMonth)
+        public EmployeeUpdateRequestModel(string name, string surname, string fatherName, string finCode, int userId,
+            string address, string phone, int gender, int dutyId, DateTime birthDay, int dailyWorkHour, int operatingMode,
+            Status status, int previousExperienceYear, int previousExperienceMonth)
         {
             Name = name;
             Surname = surname;

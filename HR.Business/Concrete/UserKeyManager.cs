@@ -6,6 +6,7 @@ using HR.Business.Abstract;
 using HR.Business.Validation.FluentValidation;
 using HR.DataAccess.Abstract;
 using HR.Entities.Concrete;
+using HR.Entities.Constants;
 
 namespace HR.Business.Concrete
 {
@@ -13,12 +14,16 @@ namespace HR.Business.Concrete
     {
         private readonly IAuthService _authService;
         private readonly IUserOperationClaimService _userOperationClaimService;
+        private readonly IEmployeeService _employeeService;
+        private readonly INotificationService _notificationService;
 
-        public UserKeyManager(IUserKeyRepository repository, IAuthService authService, IUserOperationClaimService userOperationClaimService) : base(repository)
+        public UserKeyManager(IUserKeyRepository repository, IAuthService authService, IUserOperationClaimService userOperationClaimService, IEmployeeService employeeService, INotificationService notificationService) : base(repository)
         {
             base.SetValidator(new UserKeyValidator());
             _authService = authService;
             _userOperationClaimService = userOperationClaimService;
+            _employeeService = employeeService;
+            _notificationService = notificationService;
         }
 
         public UserKey Generate(int roleId)
@@ -130,8 +135,6 @@ namespace HR.Business.Concrete
 
         public User RegisterWithKey(UserForRegisterModel user)
         {
-            //var currentDate = new DateTimeOffset(DateTime.Now);
-            //var key = Repository.Get(k => k.SecretKey == user.Code & (DateTime.Now - k.CreateDate).TotalMinutes < 10);
             var key = Repository.GetByKey(user.Code);
 
             if (key is null)
@@ -145,6 +148,10 @@ namespace HR.Business.Concrete
             key.UserId = data.Id;
             key.IsUsed = true;
             Repository.Update(key);
+
+            var employee = new Employee(0, data.FirstName, data.LastName, "", "", data.Id, "", "", 0, 0, DateTime.MinValue, 0, 0, Status.Pending, 0, 0);
+
+            employee = _employeeService.Add(employee);
 
             return data;
         }

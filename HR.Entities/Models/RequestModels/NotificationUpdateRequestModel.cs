@@ -9,19 +9,19 @@ namespace HR.Entities.Models.RequestModels
         {
 
         }
-        public NotificationUpdateRequestModel(int id, string title, NotificationTypes notificationType, int employeeId, bool used)
+        public NotificationUpdateRequestModel(int id, string title, NotificationTypes notificationType, int userId, bool used)
         {
             Id = id;
             Title = title;
             NotificationType = notificationType;
-            EmployeeId = employeeId;
+            UserId = userId;
             Used = used;
         }
 
         public int Id { get; set; }
         public string Title { get; set; }
         public NotificationTypes NotificationType { get; set; }
-        public int EmployeeId { get; set; }
+        public int UserId { get; set; }
         public bool Used { get; set; }
     }
 }

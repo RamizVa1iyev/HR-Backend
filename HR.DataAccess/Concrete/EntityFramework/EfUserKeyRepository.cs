@@ -18,7 +18,7 @@ namespace HR.DataAccess.Concrete.EntityFramework
             var result = from k in Context.UserKeys
                          where k.SecretKey == key & EF.Functions.DateDiffMinute(k.CreateDate, DateTime.Now) < 10 & !k.IsUsed
                          select k;
-            return result.FirstOrDefault();
+            return result?.FirstOrDefault();
         }
     }
 }

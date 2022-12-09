@@ -2,6 +2,7 @@
 using Core.WebAPI;
 using HR.Business.Abstract;
 using HR.Entities.Concrete;
+using HR.Entities.Constants;
 using HR.Entities.Models.RequestModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -45,6 +46,12 @@ namespace HR.WebApi.Controllers
         public IActionResult GetByUser(int userId)
         {
             return Ok(Service.GetByUser(userId));
+        }
+
+        [HttpGet("setstatus")]
+        public IActionResult SetStatus(int notificationId, Status status)
+        {
+            return Ok(Service.SetStatus(notificationId, status));
         }
     }
 }

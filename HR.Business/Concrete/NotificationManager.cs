@@ -65,5 +65,15 @@ namespace HR.Business.Concrete
 
             return data;
         }
+
+        public Notification SetStatus(int notificationId, Status status)
+        {
+            var notification = base.Get(notificationId);
+            notification.Status = status;
+
+            return Repository.Update(notification);
+        }
+
+
     }
 }

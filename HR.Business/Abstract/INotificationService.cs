@@ -13,5 +13,6 @@ namespace HR.Business.Abstract
         Vacation Vacation(int notificationId);
         NotificationTypes GetNotificationType(int notificationId);
         List<Notification> GetByUser(int userId);
+        Notification SetStatus(int notificationId, Status status);
     }
 }

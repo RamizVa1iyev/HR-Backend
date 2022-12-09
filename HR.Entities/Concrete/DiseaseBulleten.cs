@@ -11,7 +11,7 @@ namespace HR.Entities.Concrete
         public string DocumentNumber { get; set; }
         public DateTime CreateDate { get; set; }
         public string ClinicName { get; set; }
-        public virtual Employee? Employee { get; set; }
+        //public virtual Employee? Employee { get; set; }
         public double PayPercent { get; set; }
 
         public DiseaseBulleten()

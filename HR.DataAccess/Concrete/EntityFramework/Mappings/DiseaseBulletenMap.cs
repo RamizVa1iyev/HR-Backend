@@ -23,7 +23,7 @@ namespace HR.DataAccess.Concrete.EntityFramework.Mappings
             builder.Property(d => d.DocumentNumber).HasColumnName("DocumentNumber");
             builder.Property(d => d.PayPercent).HasColumnName("PayPercent");
 
-            builder.HasOne(d => d.Employee);
+            //builder.HasOne(d => d.Employee);
             
         }
     }

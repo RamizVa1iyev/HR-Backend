@@ -2,6 +2,7 @@
 using Core.Entities.Concrete;
 using HR.Entities.Concrete;
 using HR.Entities.Constants;
+using HR.Entities.Models.RequestModels;
 
 namespace HR.Business.Abstract
 {
@@ -14,5 +15,6 @@ namespace HR.Business.Abstract
         NotificationTypes GetNotificationType(int notificationId);
         List<Notification> GetByUser(int userId);
         Notification SetStatus(int notificationId, Status status);
+        Notification SaveEmployee(int notificationId, EmployeeUpdateRequestModel model);
     }
 }

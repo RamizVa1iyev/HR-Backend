@@ -48,10 +48,16 @@ namespace HR.WebApi.Controllers
             return Ok(Service.GetByUser(userId));
         }
 
-        [HttpGet("setstatus")]
+        [HttpPost("setstatus")]
         public IActionResult SetStatus(int notificationId, Status status)
         {
             return Ok(Service.SetStatus(notificationId, status));
+        }
+
+        [HttpPost("saveemployee")]
+        public IActionResult SaveEmployee(int notificationId, EmployeeUpdateRequestModel employeeUpdateRequestModel)
+        {
+            return Ok(Service.SaveEmployee(notificationId, employeeUpdateRequestModel));
         }
     }
 }

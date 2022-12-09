@@ -5,6 +5,7 @@ using HR.Business.Validation.FluentValidation;
 using HR.DataAccess.Abstract;
 using HR.Entities.Concrete;
 using HR.Entities.Constants;
+using HR.Entities.Models.RequestModels;
 
 namespace HR.Business.Concrete
 {
@@ -74,6 +75,15 @@ namespace HR.Business.Concrete
             return Repository.Update(notification);
         }
 
+        public Notification SaveEmployee(int notificationId, EmployeeUpdateRequestModel model)
+        {
+            var notification = base.Get(notificationId);
+            notification.Status = model.Status;
 
+            var employee = base.Map<EmployeeUpdateRequestModel, Employee>(model);
+            _employeeService.Update(employee);
+
+            return Repository.Update(notification);
+        }
     }
 }

@@ -22,6 +22,7 @@ namespace HR.Business.Concrete
 
         public override DiseaseBulleten Add(DiseaseBulleten entity)
         {
+            entity.CreateDate = DateTime.Now;
             var data = base.Add(entity);
 
             _notificationService.AddNotification(data);

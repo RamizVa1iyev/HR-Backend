@@ -17,7 +17,7 @@ namespace HR.Entities.Models.RequestModels
             EndDate = endDate;
             Note = note;
             DocumentNumber = documentNumber;
-            CreateDate = createDate;
+            //CreateDate = createDate;
             ClinicName = clinicName;
             PayPercent = payPercent;
         }
@@ -27,7 +27,7 @@ namespace HR.Entities.Models.RequestModels
         public DateTime EndDate { get; set; }
         public string Note { get; set; }
         public string DocumentNumber { get; set; }
-        public DateTime CreateDate { get; set; }
+       // public DateTime CreateDate { get; set; }=DateTime.Now;
         public string ClinicName { get; set; }
         public double PayPercent { get; set; }
     }

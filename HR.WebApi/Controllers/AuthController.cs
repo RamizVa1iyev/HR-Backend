@@ -4,7 +4,7 @@ using Core.Entities.Models;
 using HR.Business.Abstract;
 using HR.Entities.Models.ResponseModels;
 using Microsoft.AspNetCore.Mvc;
-using Nest;
+using System.Linq;
 
 namespace HR.WebApi.Controllers
 {
@@ -69,7 +69,15 @@ namespace HR.WebApi.Controllers
         [HttpGet("getallusers")]
         public IActionResult GetAllUsers()
         {
-            return Ok(_userService.GetAll());
+            var users = _userService.GetAll();
+            var employees = _employeeService.GetAll();
+            var result = from user in users
+                         where user.Status
+                         join employee in employees on user.Id equals employee.UserId
+                         where employee.Status == Entities.Constants.Status.Accepted
+                         select new UserResponseModel(user.Id, user.FirstName, user.LastName, user.Email, user.PasswordHash, user.PasswordSalt, user.Status, employee.Id);
+
+            return Ok(result.ToList());
         }
 
         [HttpPost("editinfo")]

@@ -3,6 +3,7 @@ using HR.Business.Abstract;
 using HR.Business.Validation.FluentValidation;
 using HR.DataAccess.Abstract;
 using HR.Entities.Concrete;
+using HR.Entities.Models.ResponseModels;
 
 namespace HR.Business.Concrete
 {
@@ -28,6 +29,11 @@ namespace HR.Business.Concrete
             _notificationService.AddNotification(data);
 
             return data;
+        }
+
+        public List<DiseaseResponseModel> GetDiseases(int employeeId)
+        {
+            return Repository.GetDiseases(e => e.EmployeeId == employeeId);
         }
     }
 }

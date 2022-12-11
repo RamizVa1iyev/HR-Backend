@@ -10,7 +10,7 @@ namespace HR.Entities.Concrete
         public int Count { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public virtual Employee? Employee { get; set; }
+        //public virtual Employee? Employee { get; set; }
 
         public Permission()
         {

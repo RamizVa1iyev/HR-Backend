@@ -19,7 +19,7 @@ namespace HR.DataAccess.Concrete.EntityFramework.Mappings
             builder.Property(p=>p.StartDate).HasColumnName("StartDate");
             builder.Property(p => p.EndDate).HasColumnName("EndDate");
 
-            builder.HasOne(p=>p.Employee);
+            //builder.HasOne(p=>p.Employee);
         }
     }
 }

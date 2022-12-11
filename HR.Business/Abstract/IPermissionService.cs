@@ -1,15 +1,12 @@
 ﻿using Core.Business.Abstract;
 using HR.Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HR.Entities.Models.ResponseModels;
 
 namespace HR.Business.Abstract
 {
-    public interface IPermissionService:IExtendedServiceRepository<Permission>
+    public interface IPermissionService : IExtendedServiceRepository<Permission>
     {
         List<Permission> GetPermissionByEmployee(int employeeId);
+        List<PermissionResponseModel> GetPermissions(int employeeId);
     }
 }

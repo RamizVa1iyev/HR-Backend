@@ -19,7 +19,7 @@ namespace HR.DataAccess.Concrete.EntityFramework.Mappings
             builder.Property(c => c.ContractNumber).HasColumnName("ContractNumber");
             builder.Property(c => c.EmployeeId).HasColumnName("EmployeeId");
 
-            builder.HasOne(d => d.Employee);
+            //builder.HasOne(d => d.Employee);
         }
     }
 }

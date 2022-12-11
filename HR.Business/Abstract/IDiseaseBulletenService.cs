@@ -1,15 +1,12 @@
 ﻿using Core.Business.Abstract;
 using HR.Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HR.Entities.Models.ResponseModels;
 
 namespace HR.Business.Abstract
 {
-    public interface IDiseaseBulletenService: IExtendedServiceRepository<DiseaseBulleten>
+    public interface IDiseaseBulletenService : IExtendedServiceRepository<DiseaseBulleten>
     {
         List<DiseaseBulleten> GetDiseaseBulletenByEmployee(int employeeId);
+        List<DiseaseResponseModel> GetDiseases(int employeeId);
     }
 }

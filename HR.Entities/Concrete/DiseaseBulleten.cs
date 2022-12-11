@@ -1,5 +1,4 @@
 ﻿using Core.Entities.Concrete;
-using System.Diagnostics;
 
 namespace HR.Entities.Concrete
 {

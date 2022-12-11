@@ -2,7 +2,6 @@
 using HR.Business.Abstract;
 using HR.Entities.Concrete;
 using HR.Entities.Models.RequestModels;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HR.WebApi.Controllers
@@ -19,7 +18,7 @@ namespace HR.WebApi.Controllers
         [HttpGet("getbyemployee")]
         public IActionResult GetByEmployee(int employeeId)
         {
-            return Ok(Service.GetDiseaseBulletenByEmployee(employeeId));
+            return Ok(Service.GetDiseases(employeeId));
         }
     }
 }

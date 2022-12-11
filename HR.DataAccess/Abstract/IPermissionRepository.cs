@@ -1,15 +1,12 @@
 ﻿using Core.DataAccess.Repositories;
 using HR.Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HR.Entities.Models.ResponseModels;
+using System.Linq.Expressions;
 
 namespace HR.DataAccess.Abstract
 {
-    public interface IPermissionRepository:IExtendedRepository<Permission>
+    public interface IPermissionRepository : IExtendedRepository<Permission>
     {
-
+        List<PermissionResponseModel> GetPermissions(Expression<Func<Permission, bool>> predicate = null);
     }
 }

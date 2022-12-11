@@ -19,7 +19,7 @@ namespace HR.WebApi.Controllers
         [HttpGet("getbyemployee")]
         public IActionResult GetByEmployee(int employeeId)
         {
-            return Ok(Service.GetPermissionByEmployee(employeeId));
+            return Ok(Service.GetPermissions(employeeId));
         }
 
         public override IActionResult Add(PermissionAddRequestModel entity)

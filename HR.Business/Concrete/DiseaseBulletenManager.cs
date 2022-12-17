@@ -34,8 +34,10 @@ namespace HR.Business.Concrete
         public override DiseaseBulleten Update(DiseaseBulleten entity)
         {
             var data = base.Get(entity.Id);
-            entity.CreateDate = data.CreateDate;
-            return base.Update(entity);
+            data = new DiseaseBulleten(entity.Id, entity.EmployeeId, entity.StartDate, entity.EndDate, entity.Note, 
+                                        entity.DocumentNumber, data.CreateDate, entity.ClinicName, entity.PayPercent);
+
+            return base.Update(data);
         }
 
         public List<DiseaseResponseModel> GetDiseases(int employeeId)

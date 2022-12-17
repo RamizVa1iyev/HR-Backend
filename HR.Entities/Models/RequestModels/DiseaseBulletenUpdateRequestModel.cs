@@ -10,7 +10,7 @@ namespace HR.Entities.Models.RequestModels
 
         }
 
-        public DiseaseBulletenUpdateRequestModel(int id, int employeeId, DateTime startDate, DateTime endDate, string note, string documentNumber, DateTime createDate, string clinicName, double payPercent)
+        public DiseaseBulletenUpdateRequestModel(int id, int employeeId, DateTime startDate, DateTime endDate, string note, string documentNumber, string clinicName, double payPercent)
         {
             Id = id;
             EmployeeId = employeeId;
@@ -18,7 +18,7 @@ namespace HR.Entities.Models.RequestModels
             EndDate = endDate;
             Note = note;
             DocumentNumber = documentNumber;
-            CreateDate = createDate;
+            //CreateDate = createDate;
             ClinicName = clinicName;
             PayPercent = payPercent;
         }
@@ -29,7 +29,7 @@ namespace HR.Entities.Models.RequestModels
         public DateTime EndDate { get; set; }
         public string Note { get; set; }
         public string DocumentNumber { get; set; }
-        public DateTime CreateDate { get; set; }
+        //public DateTime CreateDate { get; set; }
         public string ClinicName { get; set; }
         public double PayPercent { get; set; }
 

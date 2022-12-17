@@ -31,6 +31,13 @@ namespace HR.Business.Concrete
             return data;
         }
 
+        public override DiseaseBulleten Update(DiseaseBulleten entity)
+        {
+            var data = base.Get(entity.Id);
+            entity.CreateDate = data.CreateDate;
+            return base.Update(entity);
+        }
+
         public List<DiseaseResponseModel> GetDiseases(int employeeId)
         {
             return Repository.GetDiseases(e => e.EmployeeId == employeeId);

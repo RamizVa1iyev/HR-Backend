@@ -106,6 +106,9 @@ namespace Core.Extensions
 
         public static int ToInt(this object value)
         {
+            if(value is null)
+                return 0;
+
             var availability = int.TryParse(value.ToString(), out int result);
 
             if (!availability)

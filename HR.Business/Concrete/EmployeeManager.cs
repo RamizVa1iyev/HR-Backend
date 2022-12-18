@@ -5,6 +5,7 @@ using HR.Business.Validation.FluentValidation;
 using HR.DataAccess.Abstract;
 using HR.Entities.Concrete;
 using HR.Entities.Constants;
+using HR.Entities.Models.Other;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,11 @@ namespace HR.Business.Concrete
         public List<Employee> GetEmployeeByUser(int userId)
         {
             return Repository.GetAll(e => e.UserId == userId);
+        }
+
+        public List<TabelMainData> GetEmployeeMainData()
+        {
+            return Repository.GetEmployeeMainData();
         }
 
         public Employee SetStatus(int employeeId, Status status)

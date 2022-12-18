@@ -41,6 +41,8 @@
 
         public void Add(TabelRow row) => _rows.Add(row);
 
+        public void AddRange(IEnumerable<TabelRow> rows) => _rows.AddRange(rows);
+
         public void Remove(TabelRow row) => _rows.Remove(row);
 
         public void Clear() => _rows.Clear();
@@ -53,6 +55,9 @@
             }
         }
 
+        //public string[,] Export()
+        //{
 
+        //}
     }
 }

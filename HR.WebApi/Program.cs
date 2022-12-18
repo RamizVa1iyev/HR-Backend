@@ -75,7 +75,7 @@ app.UseCors(builder =>
 // Configure the HTTP request pipeline.
 app.UseSwagger();
 app.UseSwaggerUI(c => c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None));
-//app.ConfigureExceptionMiddleware();
+app.ConfigureExceptionMiddleware();
 
 app.UseAuthentication();
 

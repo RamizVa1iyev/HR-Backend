@@ -25,6 +25,11 @@ namespace HR.Business.Concrete
             _vacationService = vacationService;
         }
 
+        public override List<Notification> GetAll()
+        {
+            return Repository.GetAll(n => n.Status == Status.Pending);
+        }
+
         public DiseaseBulleten Disease(int notificationId)
         {
             var notification = Repository.Get(n => n.Id == notificationId);
@@ -35,7 +40,7 @@ namespace HR.Business.Concrete
 
         public List<Notification> GetByUser(int userId)
         {
-            return Repository.GetAll(n => n.UserId == userId);
+            return Repository.GetAll(n => n.UserId == userId & n.Status == Status.Pending);
         }
 
         public NotificationTypes GetNotificationType(int notificationId)

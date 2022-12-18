@@ -23,6 +23,7 @@ namespace HR.Business.Concrete
 
         public override Permission Add(Permission entity)
         {
+            CheckQuota(entity);
             var data = base.Add(entity);
 
             _notificationService.AddNotification(data);
@@ -30,9 +31,27 @@ namespace HR.Business.Concrete
             return data;
         }
 
+        public override Permission Update(Permission entity)
+        {
+            CheckQuota(entity);
+            return base.Update(entity);
+        }
+
         public List<PermissionResponseModel> GetPermissions(int employeeId)
         {
             return Repository.GetPermissions(p => p.EmployeeId == employeeId);
+        }
+
+        private void CheckQuota(Permission entity)
+        {
+            var dayCount = Repository.GetDayCount(entity.EmployeeId);
+            var hourCount = Repository.GetHourCount(entity.EmployeeId);
+
+            if (dayCount + (entity.EndDate - entity.StartDate).TotalDays > 2)
+                throw new Exception("Quota exceeded. Max permission time is 2 day 5 hour. You have:" + dayCount + " day " + hourCount + " hour.");
+
+            if(hourCount + (entity.EndDate - entity.StartDate).TotalHours > 5)
+                throw new Exception("Quota exceeded. Max permission time is 2 day 5 hour. You have:" + dayCount + " day " + hourCount + " hour.");
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Core.Business.Abstract;
 using HR.Entities.Concrete;
 using HR.Entities.Constants;
+using HR.Entities.Models.Other;
 
 namespace HR.Business.Abstract
 {
@@ -10,5 +11,7 @@ namespace HR.Business.Abstract
         Employee GetByUserId(int userId);
         List<Employee> GetEmployeeByDuty(int dutyId);
         List<Employee> GetEmployeeByUser(int userId);
+
+        List<TabelMainData> GetEmployeeMainData();
     }
 }

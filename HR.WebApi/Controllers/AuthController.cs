@@ -55,8 +55,9 @@ namespace HR.WebApi.Controllers
         [HttpGet("getroles")]
         public IActionResult GetRoles(int userId)
         {
+            var employee = _employeeService.GetByUserId(userId);
             var response = new UserRoleResponseModel
-                (_userService.GetClaims(new User { Id = userId }), _employeeService.GetByUserId(userId).Id);
+                (_userService.GetClaims(new User { Id = userId }), employee.Id, employee.Status);
             return Ok(response);
         }
 

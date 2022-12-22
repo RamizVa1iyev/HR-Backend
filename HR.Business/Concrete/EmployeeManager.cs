@@ -1,18 +1,12 @@
-﻿using Core.Business.Abstract;
+﻿using Core.Aspects.Autofac.Caching;
+using Core.Business.Abstract;
 using Core.Business.Concrete;
-using FluentValidation;
 using HR.Business.Abstract;
 using HR.Business.Validation.FluentValidation;
 using HR.DataAccess.Abstract;
 using HR.Entities.Concrete;
 using HR.Entities.Constants;
-using HR.Entities.Models.Other;
 using HR.Entities.Models.ResponseModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HR.Business.Concrete
 {
@@ -25,26 +19,31 @@ namespace HR.Business.Concrete
             _userService = userService;
         }
 
+        [CacheAspect]
         public Employee GetByUserId(int userId)
         {
-            return Repository.Get(e => e.UserId== userId);
+            return Repository.Get(e => e.UserId == userId);
         }
 
+        [CacheAspect]
         public List<Employee> GetEmployeeByDuty(int dutyId)
         {
-           return Repository.GetAll(e=>e.DutyId == dutyId);
+            return Repository.GetAll(e => e.DutyId == dutyId);
         }
 
+        [CacheAspect]
         public List<Employee> GetEmployeeByUser(int userId)
         {
             return Repository.GetAll(e => e.UserId == userId);
         }
 
+        [CacheAspect]
         public List<EmployeeModel> GetEmployeeMainData(DateTime date)
         {
             return Repository.GetEmployeeMainData(date);
         }
-
+        
+        [CacheRemoveAspect("get")]
         public Employee SetStatus(int employeeId, Status status)
         {
             var employee = base.Get(employeeId);
@@ -53,11 +52,12 @@ namespace HR.Business.Concrete
             return Repository.Update(employee);
         }
 
+        [CacheRemoveAspect("get")]
         public Employee ChangeWorkStatus(int employeeId, bool value)
         {
             var employee = base.Get(employeeId);
 
-            if(value)
+            if (value)
                 employee.Status = Status.Accepted;
             else
                 employee.Status = Status.Rejected;

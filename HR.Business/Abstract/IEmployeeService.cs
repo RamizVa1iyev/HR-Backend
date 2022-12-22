@@ -2,6 +2,7 @@
 using HR.Entities.Concrete;
 using HR.Entities.Constants;
 using HR.Entities.Models.Other;
+using HR.Entities.Models.ResponseModels;
 
 namespace HR.Business.Abstract
 {
@@ -12,6 +13,6 @@ namespace HR.Business.Abstract
         List<Employee> GetEmployeeByDuty(int dutyId);
         List<Employee> GetEmployeeByUser(int userId);
 
-        List<TabelMainData> GetEmployeeMainData();
+        List<EmployeeModel> GetEmployeeMainData(DateTime date);
     }
 }

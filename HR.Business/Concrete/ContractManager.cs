@@ -15,7 +15,7 @@ namespace HR.Business.Concrete
 
         public string GenerateContractNumber()
         {
-            int nextId= base.Repository.GetNextId();
+            int nextId = base.Repository.GetNextId();
             return String.Format("CN-{0}-{1}",DateTime.Now.Year.ToString().Substring(2),nextId.ToString("0000"));
         }
         public override Contract Add(Contract entity)

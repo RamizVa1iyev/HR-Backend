@@ -6,6 +6,7 @@ using HR.DataAccess.Abstract;
 using HR.Entities.Concrete;
 using HR.Entities.Constants;
 using HR.Entities.Models.Other;
+using HR.Entities.Models.ResponseModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,9 +37,9 @@ namespace HR.Business.Concrete
             return Repository.GetAll(e => e.UserId == userId);
         }
 
-        public List<TabelMainData> GetEmployeeMainData()
+        public List<EmployeeModel> GetEmployeeMainData(DateTime date)
         {
-            return Repository.GetEmployeeMainData();
+            return Repository.GetEmployeeMainData(date);
         }
 
         public Employee SetStatus(int employeeId, Status status)

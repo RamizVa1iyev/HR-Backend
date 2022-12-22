@@ -130,11 +130,12 @@ namespace HR.Entities.Models.Other
                         disease++;
                         break;
                     default:
-                        if(int.TryParse(item.ToString(), out int val))
-                        {
-                            day++;
-                            hour += val;
-                        }
+                        if (item is not null)
+                            if (int.TryParse(item.ToString(), out int val))
+                            {
+                                day++;
+                                hour += val;
+                            }
                         break;
                 }
             }

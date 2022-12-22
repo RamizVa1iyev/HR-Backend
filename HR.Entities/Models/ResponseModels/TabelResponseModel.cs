@@ -4,14 +4,18 @@ namespace HR.Entities.Models.ResponseModels
 {
     public class TabelResponseModel : IModel
     {
-        public TabelResponseModel() { }
-        public TabelResponseModel(DateTime forDate, string[,] tabelResult)
+        public TabelResponseModel() 
+        {
+            Rows = new List<TabelResponseRow>();
+        }
+
+        public TabelResponseModel(DateTime forDate, List<TabelResponseRow> rows)
         {
             ForDate = forDate;
-            TabelResult = tabelResult;
+            Rows = rows;
         }
 
         public DateTime ForDate { get; set; }
-        public string[,] TabelResult { get; set; }
+        public List<TabelResponseRow> Rows { get; set; }
     }
 }

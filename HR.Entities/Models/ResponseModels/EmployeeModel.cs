@@ -9,7 +9,7 @@ namespace HR.Entities.Models.ResponseModels
 
         }
 
-        public EmployeeModel(int no, int employeeId, string name, string surname, string fatherName, decimal salary, string duty, string state, int dailyWorkHour)
+        public EmployeeModel(int no, int employeeId, string name, string surname, string fatherName, decimal salary, string duty, string state, int dailyWorkHour, Contract contract)
         {
             No = no;
             EmployeeId = employeeId;
@@ -20,6 +20,7 @@ namespace HR.Entities.Models.ResponseModels
             Duty = duty;
             State = state;
             DailyWorkHour = dailyWorkHour;
+            Contract = contract;
         }
 
         public int No { get; set; }
@@ -32,6 +33,7 @@ namespace HR.Entities.Models.ResponseModels
         public string State { get; set; }
         public int DailyWorkHour { get; set; }
 
+        public Contract Contract { get; set; }
         public List<Overtime> Overtimes { get; set; }
         public List<Permission> Permissions { get; set; }
         public List<DiseaseBulleten> Bulletens { get; set; }

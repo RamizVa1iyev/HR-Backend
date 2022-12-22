@@ -1,20 +1,26 @@
-﻿using HR.Entities.Models.Other;
+﻿using HR.Business.Concrete;
+using HR.DataAccess.Concrete.EntityFramework;
+using HR.DataAccess.Concrete.EntityFramework.Context;
+using HR.Entities.Models.Other;
 
 
-var tabel = new TabelDataStructure();
 
-tabel.Add(new TabelRow
-            (
-                new TabelMainData
-                    (
-                        1, 1, "Asim", "Alizada", "Ali", 1200, "Programmer", "Main office"
-                    ),
-                new TabelValues(),
-                10
-            )
-         );
-tabel[0].Values.SetAll("8");
-tabel[0].Show();
+int counter = 0;
+
+for (int i = 0; i < 16; i++)
+{
+	for (int j = 0; j < 5; j++)
+	{
+		counter++;
+	}
+
+    for (int j = 0; j < 5; j++)
+    {
+        counter++;
+    }
+}
+
+Console.WriteLine(counter);
 
 Console.WriteLine("Executed successfully!");
 

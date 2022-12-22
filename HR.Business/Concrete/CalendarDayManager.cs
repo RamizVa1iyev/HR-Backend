@@ -13,6 +13,12 @@ namespace HR.Business.Concrete
             base.SetValidator(new CalendarDayValidator());
         }
 
+        public List<CalendarDay> GetByDate(DateTime date)
+        {
+            var first = new DateTime(date.Year, date.Month, 1);
+            var last = first.AddMonths(1);
 
+            return Repository.GetAll(c => c.Date >= first & c.Date < last);
+        }
     }
 }

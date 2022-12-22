@@ -30,7 +30,7 @@
 
         public void SetAll(int start, int end, string value)
         {
-            for (int i = start; i < end; i++)
+            for (int i = start - 1; i <= end - 1; i++)
             {
                 Days[i] = value;
             }

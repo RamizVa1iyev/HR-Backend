@@ -1,4 +1,5 @@
-﻿using HR.Business.Abstract;
+﻿using Core.Extensions;
+using HR.Business.Abstract;
 using HR.Entities.Models.Other;
 using HR.Entities.Models.ResponseModels;
 
@@ -32,23 +33,30 @@ namespace HR.Business.Concrete
         public TabelResponseModel GetTabel(DateTime date)
         {
             var ds = new TabelDataStructure();
+            ds.ForDate = date;
 
             var data = new List<TabelRow>();
 
-            var mainData = _employeeService.GetEmployeeMainData();
+            var mainData = _employeeService.GetEmployeeMainData(date);
 
             foreach (var item in mainData)
             {
-                //data.Add(new TabelRow(item, new TabelValues(), ))
+                var row = new TabelRow
+                    (
+                        new TabelMainData(item.No, item.EmployeeId, item.Name, item.Surname, item.FatherName, item.Salary, item.Duty, item.State),
+                        new TabelValues(),
+                        item.Overtimes.Select(o => o.HourCount).Count()
+                    );
+                row.Values.SetAll(item.DailyWorkHour.ToString());
+
+                data.Add(row);
             }
-
-
-
-
 
             ds.AddRange(data);
 
-            return new TabelResponseModel();
+            ds.Prepare(_calendarDayService.GetByDate(date).OrderBy(c => c.Date).ToList(), mainData);
+
+            return ds.Export();
         }
 
         protected TTarget Map<TCurrent, TTarget>(TCurrent source)

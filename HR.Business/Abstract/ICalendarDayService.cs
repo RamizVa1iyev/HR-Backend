@@ -5,6 +5,6 @@ namespace HR.Business.Abstract
 {
     public interface ICalendarDayService : IExtendedServiceRepository<CalendarDay>
     {
-
+        List<CalendarDay> GetByDate(DateTime date);
     }
 }

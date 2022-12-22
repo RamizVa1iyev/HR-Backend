@@ -1,5 +1,4 @@
-﻿using Core.Extensions;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace HR.Entities.Models.Other
 {
@@ -79,42 +78,22 @@ namespace HR.Entities.Models.Other
             AdditionalData = new TabelAdditionalData();
         }
 
-        public TabelRow(TabelMainData mainData, TabelValues values, int overtime)
+        public TabelRow(TabelMainData mainData, TabelValues values, int overtime, int permissionHours)
         {
             MainData = mainData;
             Values = values;
             AdditionalData = new TabelAdditionalData();
-            SetAdditional(overtime);
+            SetAdditional(overtime, permissionHours);
         }
 
         public TabelMainData MainData { get; set; }
         public TabelValues Values { get; set; }
         public TabelAdditionalData AdditionalData { get; set; }
 
-        public void Show()
-        {
-            var mprops = MainData.GetType().GetProperties();
-            var add = AdditionalData.GetType().GetProperties();
-
-            Print(MainData, mprops);
-            foreach (var item in Values.Days)
-            {
-                Console.Write(item + "-");
-            }
-            Print(AdditionalData, add);
-        }
-
-        private void Print(object core, PropertyInfo[] properties)
-        {
-            foreach (var prop in properties)
-            {
-                Console.Write(prop.GetValue(core) + "-");
-            }
-        }
-
-        private void SetAdditional(int overtime)
+        public void SetAdditional(int overtime, int permissionHours)
         {
             AdditionalData.Overtime = overtime;
+            AdditionalData.PermissionHours = permissionHours;
             int day = 0, hour = 0, vacation = 0, disease = 0;
             foreach (var item in Values.Days)
             {

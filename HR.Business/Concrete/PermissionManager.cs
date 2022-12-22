@@ -47,10 +47,10 @@ namespace HR.Business.Concrete
             var dayCount = Repository.GetDayCount(entity.EmployeeId);
             var hourCount = Repository.GetHourCount(entity.EmployeeId);
 
-            if (dayCount + (entity.EndDate - entity.StartDate).TotalDays > 2)
+            if (dayCount + (int)(entity.EndDate - entity.StartDate).TotalDays > 2)
                 throw new Exception("Quota exceeded. Max permission time is 2 day 5 hour. You have:" + dayCount + " day " + hourCount + " hour.");
 
-            if(hourCount + (entity.EndDate - entity.StartDate).TotalHours > 5)
+            if(hourCount + (int)(entity.EndDate - entity.StartDate).TotalHours > 5)
                 throw new Exception("Quota exceeded. Max permission time is 2 day 5 hour. You have:" + dayCount + " day " + hourCount + " hour.");
         }
     }

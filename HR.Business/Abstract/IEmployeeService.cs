@@ -12,7 +12,7 @@ namespace HR.Business.Abstract
         Employee GetByUserId(int userId);
         List<Employee> GetEmployeeByDuty(int dutyId);
         List<Employee> GetEmployeeByUser(int userId);
-
+        Employee ChangeWorkStatus(int employeeId, bool value);
         List<EmployeeModel> GetEmployeeMainData(DateTime date);
     }
 }

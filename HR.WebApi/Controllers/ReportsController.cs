@@ -17,11 +17,11 @@ namespace HR.WebApi.Controllers
             _employeeService = employeeService;
         }
 
-        [HttpGet("test")]
-        public IActionResult Test(DateTime date)
-        {
-            return Ok(_employeeService.GetEmployeeMainData(date));
-        }
+        //[HttpGet("test")]
+        //public IActionResult Test(DateTime date)
+        //{
+        //    return Ok(_employeeService.GetEmployeeMainData(date));
+        //}
 
         [HttpGet("tabel")]
         public IActionResult Tabel(DateTime date) 

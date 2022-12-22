@@ -1,4 +1,5 @@
-﻿using Core.Business.Concrete;
+﻿using Core.Business.Abstract;
+using Core.Business.Concrete;
 using FluentValidation;
 using HR.Business.Abstract;
 using HR.Business.Validation.FluentValidation;
@@ -17,9 +18,11 @@ namespace HR.Business.Concrete
 {
     public class EmployeeManager : ManagerRepositoryBase<Employee, IEmployeeRepository>, IEmployeeService
     {
-        public EmployeeManager(IEmployeeRepository repository) : base(repository)
+        private readonly IUserService _userService;
+        public EmployeeManager(IEmployeeRepository repository, IUserService userService) : base(repository)
         {
             base.SetValidator(new EmployeeValidator());
+            _userService = userService;
         }
 
         public Employee GetByUserId(int userId)
@@ -49,5 +52,22 @@ namespace HR.Business.Concrete
 
             return Repository.Update(employee);
         }
+
+        public Employee ChangeWorkStatus(int employeeId, bool value)
+        {
+            var employee = base.Get(employeeId);
+
+            if(value)
+                employee.Status = Status.Accepted;
+            else
+                employee.Status = Status.Rejected;
+
+            employee = Repository.Update(employee);
+
+            _userService.BanUser(employee.UserId, value);
+
+            return employee;
+        }
+
     }
 }

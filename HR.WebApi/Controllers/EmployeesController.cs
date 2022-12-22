@@ -27,5 +27,12 @@ namespace HR.WebApi.Controllers
         {
             return Ok(Service.GetEmployeeByDuty(dutyId));
         }
+
+        [HttpPost("changeworkstatus")]
+        public IActionResult ChangeWorkStatus(EmployeeWorkStatusModel model)
+        {
+            return Ok(Service.ChangeWorkStatus(model.EmployeeId, model.Status));
+        }
+
     }
 }

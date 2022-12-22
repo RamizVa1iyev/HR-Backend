@@ -52,14 +52,6 @@ namespace HR.Entities.Models.Other
 
         public void Clear() => _rows.Clear();
 
-        public void Show()
-        {
-            foreach (var item in _rows)
-            {
-                item.Show();
-            }
-        }
-
         public void SetAll(string value)
         {
             foreach (var item in _rows)
@@ -160,6 +152,16 @@ namespace HR.Entities.Models.Other
             }
         }
 
+        private void SetAdditional(List<EmployeeModel> mainData)
+        {
+            foreach (var item in _rows)
+            {
+                var data = mainData.First(d => d.EmployeeId == item.MainData.EmployeeId);
+                item.SetAdditional(data.Overtimes.Select(o => o.HourCount).Sum(),
+                    data.Permissions.Where(p => p.PermissionType == Constants.PermissionTypes.Hour).Select(p => p.Count).Sum());
+            }
+        }
+
         public void Prepare(List<CalendarDay> days, List<EmployeeModel> mainData)
         {
             SetDays(days);
@@ -167,6 +169,7 @@ namespace HR.Entities.Models.Other
             SetVacations(mainData);
             SetDiseases(mainData);
             SetRecruitmentResignation(mainData);
+            SetAdditional(mainData);
         }
 
         public TabelResponseModel Export()
@@ -180,7 +183,8 @@ namespace HR.Entities.Models.Other
             {
                 var newRow = new TabelResponseRow(item.MainData.No, item.MainData.Name, item.MainData.Surname, item.MainData.FatherName,
                     item.MainData.Salary, item.MainData.Duty, item.MainData.State, item.Values.Days.ToList(), item.AdditionalData.TotalWorkDays,
-                    item.AdditionalData.TotalWorkHours, item.AdditionalData.VacationDays, item.AdditionalData.DiseaseDays, item.AdditionalData.Overtime);
+                    item.AdditionalData.TotalWorkHours, item.AdditionalData.VacationDays, item.AdditionalData.DiseaseDays, item.AdditionalData.Overtime,
+                    item.AdditionalData.PermissionHours);
                 result.Rows.Add(newRow);
             }
 

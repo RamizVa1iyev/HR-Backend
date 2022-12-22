@@ -45,7 +45,8 @@ namespace HR.Business.Concrete
                     (
                         new TabelMainData(item.No, item.EmployeeId, item.Name, item.Surname, item.FatherName, item.Salary, item.Duty, item.State),
                         new TabelValues(),
-                        item.Overtimes.Select(o => o.HourCount).Count()
+                        item.Overtimes.Select(o => o.HourCount).Count(),
+                        item.Permissions.Where(p=>p.PermissionType == Entities.Constants.PermissionTypes.Hour).Select(p=>p.Count).Sum()
                     );
                 row.Values.SetAll(item.DailyWorkHour.ToString());
 

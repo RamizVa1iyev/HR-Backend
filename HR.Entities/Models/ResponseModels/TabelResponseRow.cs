@@ -5,7 +5,7 @@ namespace HR.Entities.Models.ResponseModels
     public class TabelResponseRow : IModel
     {
         public TabelResponseRow() { }
-        public TabelResponseRow(int no, string name, string surname, string fatherName, decimal salary, string duty, string state, List<string> days, int totalWorkDays, int totalWorkHours, int vacationDays, int diseaseDays, int overtime)
+        public TabelResponseRow(int no, string name, string surname, string fatherName, decimal salary, string duty, string state, List<string> days, int totalWorkDays, int totalWorkHours, int vacationDays, int diseaseDays, int overtime, int permissionHours)
         {
             No = no;
             Name = name;
@@ -20,6 +20,7 @@ namespace HR.Entities.Models.ResponseModels
             VacationDays = vacationDays;
             DiseaseDays = diseaseDays;
             Overtime = overtime;
+            PermissionHours = permissionHours;
         }
 
         public int No { get; set; }
@@ -35,5 +36,6 @@ namespace HR.Entities.Models.ResponseModels
         public int VacationDays { get; set; }
         public int DiseaseDays { get; set; }
         public int Overtime { get; set; }
+        public int PermissionHours { get; set; }
     }
 }

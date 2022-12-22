@@ -25,20 +25,24 @@ namespace HR.WebApi.Controllers
         public override IActionResult Add(PermissionAddRequestModel entity)
         {
             var data = base.Map<PermissionAddRequestModel, Permission>(entity);
-            switch (entity.PermissionType)
+            data.EndDate = entity.PermissionType switch
             {
-                case PermissionTypes.Hour:
-                    data.EndDate = entity.StartDate.AddHours(entity.Count);
-                    break;
-                case PermissionTypes.Day:
-                    data.EndDate = entity.StartDate.AddDays(entity.Count);
-                    break;
-                default:
-                    data.EndDate = data.StartDate;
-                    break;
-            }
-
+                PermissionTypes.Hour => entity.StartDate.AddHours(entity.Count),
+                PermissionTypes.Day => entity.StartDate.AddDays(entity.Count)
+            };
             return Ok(Service.Add(data));
+        }
+
+        public override IActionResult Update(PermissionUpdateRequestModel entity)
+        {
+            var data = base.Map<PermissionUpdateRequestModel, Permission>(entity);
+            data.EndDate = entity.PermissionType switch
+            {
+                PermissionTypes.Hour => entity.StartDate.AddHours(entity.Count),
+                PermissionTypes.Day => entity.StartDate.AddDays(entity.Count)
+            };
+
+            return Ok(Service.Update(data));
         }
     }
 }

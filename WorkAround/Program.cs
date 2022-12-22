@@ -1,28 +1,22 @@
-﻿using HR.Business.Concrete;
-using HR.DataAccess.Concrete.EntityFramework;
-using HR.DataAccess.Concrete.EntityFramework.Context;
-using HR.Entities.Models.Other;
+﻿
+var input = "";
 
+var list = new Dictionary<string, double[]>();
 
-
-int counter = 0;
-
-for (int i = 0; i < 16; i++)
+do
 {
-	for (int j = 0; j < 5; j++)
-	{
-		counter++;
-	}
+    input = Console.ReadLine();
+    var array = Array.ConvertAll(input.Split(" ", StringSplitOptions.RemoveEmptyEntries).Skip(1).ToArray(), double.Parse);
+    if(input != "")
+        list.Add(input.Split(" ", StringSplitOptions.RemoveEmptyEntries)[0], array);
 
-    for (int j = 0; j < 5; j++)
-    {
-        counter++;
-    }
+} while (input != "");
+
+foreach (var item in list.Keys)
+{
+    Console.Write(item + " ");
+    var value = list[item];
+
+    Console.Write(Math.Round((value.Sum() / value.Length) * 3));
+    Console.WriteLine();
 }
-
-Console.WriteLine(counter);
-
-Console.WriteLine("Executed successfully!");
-
-
-Console.ReadLine();

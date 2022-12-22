@@ -8,10 +8,8 @@ namespace HR.Business.Concrete
 {
     public class StateManager : ManagerRepositoryBase<State, IStateRepository>, IStateService
     {
-        //private readonly IStateRepository _stateRepository;
         public StateManager(IStateRepository repository) : base(repository)
         {
-            //_stateRepository = repository;
             base.SetValidator(new StateValidator());
         }
     }

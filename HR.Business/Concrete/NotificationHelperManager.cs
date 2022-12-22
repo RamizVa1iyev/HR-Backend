@@ -1,4 +1,5 @@
-﻿using HR.Business.Abstract;
+﻿using Core.Aspects.Autofac.Caching;
+using HR.Business.Abstract;
 using HR.DataAccess.Abstract;
 using HR.Entities.Concrete;
 using HR.Entities.Constants;
@@ -16,6 +17,7 @@ namespace HR.Business.Concrete
             _employeeService = employeeService;
         }
 
+        [CacheRemoveAspect("get")]
         public Notification AddNotification(Employee employee)
         {
             var result = new Notification
@@ -31,6 +33,7 @@ namespace HR.Business.Concrete
             return _notificationRepository.Add(result);
         }
 
+        [CacheRemoveAspect("get")]
         public Notification AddNotification(DiseaseBulleten disease)
         {
             var employee = _employeeService.Get(disease.EmployeeId);
@@ -48,6 +51,7 @@ namespace HR.Business.Concrete
             return _notificationRepository.Add(result);
         }
 
+        [CacheRemoveAspect("get")]
         public Notification AddNotification(Permission permission)
         {
             var employee = _employeeService.Get(permission.EmployeeId);
@@ -65,6 +69,7 @@ namespace HR.Business.Concrete
             return _notificationRepository.Add(result);
         }
 
+        [CacheRemoveAspect("get")]
         public Notification AddNotification(Vacation vacation)
         {
             var employee = _employeeService.Get(vacation.EmployeeId);

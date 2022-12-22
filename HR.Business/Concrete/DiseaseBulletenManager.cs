@@ -1,4 +1,5 @@
-﻿using Core.Business.Concrete;
+﻿using Core.Aspects.Autofac.Caching;
+using Core.Business.Concrete;
 using HR.Business.Abstract;
 using HR.Business.Validation.FluentValidation;
 using HR.DataAccess.Abstract;
@@ -16,6 +17,7 @@ namespace HR.Business.Concrete
             _notificationService = notificationService;
         }
 
+        [CacheAspect]
         public List<DiseaseBulleten> GetDiseaseBulletenByEmployee(int employeeId)
         {
             return Repository.GetAll(d => d.EmployeeId == employeeId);
@@ -40,6 +42,7 @@ namespace HR.Business.Concrete
             return base.Update(data);
         }
 
+        [CacheAspect]
         public List<DiseaseResponseModel> GetDiseases(int employeeId)
         {
             return Repository.GetDiseases(e => e.EmployeeId == employeeId);

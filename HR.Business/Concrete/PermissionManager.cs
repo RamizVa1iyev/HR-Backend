@@ -1,4 +1,5 @@
-﻿using Core.Business.Concrete;
+﻿using Core.Aspects.Autofac.Caching;
+using Core.Business.Concrete;
 using Core.CCC.Exception;
 using HR.Business.Abstract;
 using HR.Business.Validation.FluentValidation;
@@ -17,6 +18,7 @@ namespace HR.Business.Concrete
             _notificationService = notificationService;
         }
 
+        [CacheAspect]
         public List<Permission> GetPermissionByEmployee(int employeeId)
         {
             return Repository.GetAll(p => p.EmployeeId == employeeId);
@@ -38,6 +40,7 @@ namespace HR.Business.Concrete
             return base.Update(entity);
         }
 
+        [CacheAspect]
         public List<PermissionResponseModel> GetPermissions(int employeeId)
         {
             return Repository.GetPermissions(p => p.EmployeeId == employeeId);

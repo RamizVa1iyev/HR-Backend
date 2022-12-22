@@ -1,4 +1,5 @@
-﻿using Core.Business.Concrete;
+﻿using Core.Aspects.Autofac.Caching;
+using Core.Business.Concrete;
 using HR.Business.Abstract;
 using HR.Business.Validation.FluentValidation;
 using HR.DataAccess.Abstract;
@@ -13,11 +14,13 @@ namespace HR.Business.Concrete
             base.SetValidator(new EmployeeRewardValidator());
         }
 
+        [CacheAspect]
         public List<EmployeeReward> GetEmployeeRewardByEmployee(int employeeId)
         {
             return Repository.GetAll(e => e.EmployeeId == employeeId);
         }
 
+        [CacheAspect]
         public List<EmployeeReward> GetEmployeeRewardByReward(int rewardId)
         {
             return Repository.GetAll(e => e.RewardId == rewardId);

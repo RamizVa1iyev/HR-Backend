@@ -1,4 +1,5 @@
-﻿using Core.Business.Concrete;
+﻿using Core.Aspects.Autofac.Caching;
+using Core.Business.Concrete;
 using Core.CCC.Exception;
 using HR.Business.Abstract;
 using HR.Business.Validation.FluentValidation;
@@ -18,6 +19,7 @@ namespace HR.Business.Concrete
             _notificationService = notificationService;
         }
 
+        [CacheAspect]
         public List<Vacation> GetVacationByEmployee(int employeeId)
         {
             return Repository.GetAll(e => e.EmployeeId == employeeId);
@@ -40,6 +42,7 @@ namespace HR.Business.Concrete
             return base.Update(entity);
         }
 
+        [CacheAspect]
         public List<VacationResponseModel> GetVacations(int employeeId)
         {
             return Repository.GetVacations(v => v.EmployeeId == employeeId);

@@ -1,4 +1,5 @@
-﻿using Core.Business.Abstract;
+﻿using Core.Aspects.Autofac.Caching;
+using Core.Business.Abstract;
 using Core.Business.Concrete;
 using HR.Business.Abstract;
 using HR.Business.Validation.FluentValidation;
@@ -30,6 +31,7 @@ namespace HR.Business.Concrete
             return Repository.GetAll(n => n.Status == Status.Pending);
         }
 
+        [CacheAspect]
         public DiseaseBulleten Disease(int notificationId)
         {
             var notification = Repository.Get(n => n.Id == notificationId);
@@ -38,16 +40,19 @@ namespace HR.Business.Concrete
             return data;
         }
 
+        [CacheAspect]
         public List<Notification> GetByUser(int userId)
         {
             return Repository.GetAll(n => n.UserId == userId & n.Status == Status.Pending);
         }
 
+        [CacheAspect]
         public NotificationTypes GetNotificationType(int notificationId)
         {
             return Repository.Get(n => n.Id == notificationId).NotificationType;
         }
 
+        [CacheAspect]
         public Permission Permission(int notificationId)
         {
             var notification = Repository.Get(n => n.Id == notificationId);
@@ -56,6 +61,7 @@ namespace HR.Business.Concrete
             return data;
         }
 
+        [CacheAspect]
         public Employee Recruitment(int notificationId)
         {
             var notification = Repository.Get(n => n.Id == notificationId);
@@ -64,6 +70,7 @@ namespace HR.Business.Concrete
             return data;
         }
 
+        [CacheAspect]
         public Vacation Vacation(int notificationId)
         {
             var notification = Repository.Get(n => n.Id == notificationId);
@@ -72,6 +79,7 @@ namespace HR.Business.Concrete
             return data;
         }
 
+        [CacheRemoveAspect("get")]
         public Notification SetStatus(int notificationId, Status status)
         {
             var notification = base.Get(notificationId);
@@ -80,6 +88,7 @@ namespace HR.Business.Concrete
             return Repository.Update(notification);
         }
 
+        [CacheRemoveAspect("get")]
         public Notification SaveEmployee(int notificationId, EmployeeUpdateRequestModel model)
         {
             var notification = base.Get(notificationId);

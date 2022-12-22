@@ -1,4 +1,5 @@
-﻿using Core.Business.Concrete;
+﻿using Core.Aspects.Autofac.Caching;
+using Core.Business.Concrete;
 using HR.Business.Abstract;
 using HR.Business.Validation.FluentValidation;
 using HR.DataAccess.Abstract;
@@ -13,6 +14,7 @@ namespace HR.Business.Concrete
             base.SetValidator(new CalendarDayValidator());
         }
 
+        [CacheAspect]
         public List<CalendarDay> GetByDate(DateTime date)
         {
             var first = new DateTime(date.Year, date.Month, 1);

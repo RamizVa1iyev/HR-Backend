@@ -1,13 +1,9 @@
-﻿using Core.Business.Concrete;
+﻿using Core.Aspects.Autofac.Caching;
+using Core.Business.Concrete;
 using HR.Business.Abstract;
 using HR.Business.Validation.FluentValidation;
 using HR.DataAccess.Abstract;
 using HR.Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HR.Business.Concrete
 {
@@ -18,6 +14,7 @@ namespace HR.Business.Concrete
             base.SetValidator(new OvertimeValidator());
         }
 
+        [CacheAspect]
         public List<Overtime> GetOvertimeByEmployee(int employeeId)
         {
             return Repository.GetAll(o => o.EmployeeId == employeeId);

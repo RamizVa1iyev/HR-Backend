@@ -1,4 +1,5 @@
-﻿using Core.Business.Abstract;
+﻿using Core.Aspects.Autofac.Caching;
+using Core.Business.Abstract;
 using Core.Business.Concrete;
 using Core.Entities.Concrete;
 using Core.Entities.Models;
@@ -28,6 +29,7 @@ namespace HR.Business.Concrete
             _contractService = contractService;
         }
 
+        [CacheRemoveAspect("get")]
         public UserKey Generate(int roleId)
         {
             var key = GenerateSecretKey(roleId);
@@ -135,6 +137,7 @@ namespace HR.Business.Concrete
             return result;
         }
 
+        [CacheRemoveAspect("get")]
         public User RegisterWithKey(UserForRegisterModel user)
         {
             var key = Repository.GetByKey(user.Code);

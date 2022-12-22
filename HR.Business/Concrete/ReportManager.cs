@@ -1,5 +1,4 @@
-﻿using Core.Extensions;
-using HR.Business.Abstract;
+﻿using HR.Business.Abstract;
 using HR.Entities.Models.Other;
 using HR.Entities.Models.ResponseModels;
 
@@ -46,7 +45,7 @@ namespace HR.Business.Concrete
                         new TabelMainData(item.No, item.EmployeeId, item.Name, item.Surname, item.FatherName, item.Salary, item.Duty, item.State),
                         new TabelValues(),
                         item.Overtimes.Select(o => o.HourCount).Count(),
-                        item.Permissions.Where(p=>p.PermissionType == Entities.Constants.PermissionTypes.Hour).Select(p=>p.Count).Sum()
+                        item.Permissions.Where(p => p.PermissionType == Entities.Constants.PermissionTypes.Hour).Select(p => p.Count).Sum()
                     );
                 row.Values.SetAll(item.DailyWorkHour.ToString());
 

@@ -1,4 +1,5 @@
 ﻿using Core.Business.Concrete;
+using Core.CCC.Exception;
 using HR.Business.Abstract;
 using HR.Business.Validation.FluentValidation;
 using HR.DataAccess.Abstract;
@@ -48,10 +49,10 @@ namespace HR.Business.Concrete
             var hourCount = Repository.GetHourCount(entity.EmployeeId);
 
             if (dayCount + (int)(entity.EndDate - entity.StartDate).TotalDays > 2)
-                throw new Exception("Quota exceeded. Max permission time is 2 day 5 hour. You have:" + dayCount + " day " + hourCount + " hour.");
+                throw new BusinessException("Quota exceeded. Max permission time is 2 day 5 hour. You have:" + dayCount + " day " + hourCount + " hour.");
 
             if(hourCount + (int)(entity.EndDate - entity.StartDate).TotalHours > 5)
-                throw new Exception("Quota exceeded. Max permission time is 2 day 5 hour. You have:" + dayCount + " day " + hourCount + " hour.");
+                throw new BusinessException("Quota exceeded. Max permission time is 2 day 5 hour. You have:" + dayCount + " day " + hourCount + " hour.");
         }
     }
 }

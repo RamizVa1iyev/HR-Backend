@@ -28,5 +28,11 @@ namespace HR.WebApi.Controllers
         {
             return Ok(_reportService.GetTabel(date));
         }
+
+        [HttpGet("salary")]
+        public IActionResult Salary(DateTime date)
+        {
+            return Ok(_reportService.GetSalary(date));
+        }
     }
 }
